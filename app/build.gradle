@@ -6,14 +6,7 @@ plugins {
 }
 
 android {
-    signingConfigs {
-        config {
-            storeFile file('D:\\keystore\\xchw2.jks')
-            keyAlias 'xchw'
-            storePassword 'xchw.shineiot@2017'
-            keyPassword 'xchw.shineiot@2017'
-        }
-    }
+
     buildFeatures {
         viewBinding = true
     }
@@ -42,12 +35,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.config
+
         }
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.config
+            
         }
     }
 
@@ -70,6 +63,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation project(path: ':base')
+//    implementation project(path: ':base')
 //    implementation 'com.github.gh7800:BaseKt:1.1'
 }
