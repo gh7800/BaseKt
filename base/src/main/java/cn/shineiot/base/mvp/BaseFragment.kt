@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
 import cn.shineiot.base.utils.LogUtil
 
 /**
@@ -30,6 +31,8 @@ abstract class BaseFragment<V : BaseView, T : BasePresenter<V>> : Fragment() {
      */
     private var hasLoadData = false
 
+    private var viewBinding : ViewBinding?= null
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mContext = context
@@ -40,7 +43,8 @@ abstract class BaseFragment<V : BaseView, T : BasePresenter<V>> : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(getLayoutId(), null)
+        viewBinding =getBinding()
+        return viewBinding?.root
     }
 
     override fun onResume() {
@@ -52,20 +56,14 @@ abstract class BaseFragment<V : BaseView, T : BasePresenter<V>> : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         LogUtil.e(this.javaClass.simpleName+"---onViewCreated")
+
         initView()
     }
 
     /**
-     * 初始化presenter
+     * 获取 ViewBinding
      */
-    abstract fun initPresenter(): T
-
-
-    /**
-     * 加载布局
-     */
-    @LayoutRes
-    abstract fun getLayoutId(): Int
+    abstract fun getBinding(): ViewBinding
 
     /**
      * 初始化 ViewI
@@ -80,6 +78,8 @@ abstract class BaseFragment<V : BaseView, T : BasePresenter<V>> : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         LogUtil.e(this.javaClass.simpleName+"---onDestroy")
+
+        viewBinding = null
     }
 
 }
