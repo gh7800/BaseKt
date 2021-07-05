@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <drawable name="black">#000000</drawable>
+    <color name="gray">#808080</color>
+    <color name="red">#FF0000</color>
+    <color name="blue">#ff33b5e5</color>
+    <color name="green">#008000</color>
+    <color name="yellow">#FF9800</color>
+    <color name="yellow_press">#BC760F</color>
+
+    <color name="F5">#f5f5f5</color>
+    <color name="F2">#f2f2f2</color>
+
+    <color name="C333">#333333</color>
+    <color name="C666">#666666</color>
+    <color name="C999">#999999</color>
+
+    <color name="BBB">#BBBBBB</color>
+    <color name="DDD">#DDDDDD</color>
+    <color name="E1">#E1E1E1</color>
+    <color name="CE">#CECECE</color>
+    <color name="FF5959">#FF5959</color>
+
+    <color name="list_divider_line">#e7e7e7</color>
+</resources>

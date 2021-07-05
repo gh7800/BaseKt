@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="IEditText" >
+        <attr name="borderCorlor" format="color"/>
+        <attr name="borderWidth" format="dimension"/>
+        <attr name="drawable_right" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="IButton">
+        <attr name="normal_color" format="color"/>
+        <attr name="pressed_color" format="color"/>
+        <attr name="enabled_color" format="color"/>
+        <attr name="radius" format="dimension"/>
+    </declare-styleable>
+
+</resources>

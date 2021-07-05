@@ -1,0 +1,75 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+//    id 'com.huawei.agconnect'
+    id 'kotlin-kapt'
+}
+
+android {
+    signingConfigs {
+        config {
+            storeFile file('D:\\keystore\\xchw2.jks')
+            keyAlias 'xchw'
+            storePassword 'xchw.shineiot@2017'
+            keyPassword 'xchw.shineiot@2017'
+        }
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+    compileSdkVersion 30
+
+    defaultConfig {
+        applicationId "cn.shineiot.base"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        kapt {
+            arguments {
+                arg('eventBusIndex', 'cn.shineiot.base.MyEventBusIndex')
+            }
+        }
+        ndk {
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation project(path: ':base')
+//    implementation 'com.github.gh7800:BaseKt:1.1'
+}
