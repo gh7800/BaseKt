@@ -1,2 +1,3 @@
-rootProject.name = "Base"
+rootProject.name = "BaseKt"
 include ':app',':base'
+includeBuild("versionplugin") //格式 includeBuild("xxx")
