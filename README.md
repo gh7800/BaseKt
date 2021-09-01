@@ -1,6 +1,4 @@
-# [![最新版 1.0.3](https://jitpack.io/v/cn.shineiot.gitlab.android/BaseKotlin.svg)](https://jitpack.io/#cn.shineiot.gitlab.android/BaseKotlin)
-
-## [![](https://img.shields.io/badge/jitpack-1.0.3-brightgreen)](https://jitpack.io/#cn.shineiot.gitlab.android/BaseKotlin)
+# [![最新版 1.0.3](https://jitpack.io/v/gh7800/BaseKt.svg)](https://jitpack.io/#gh7800/BaseKt)
 
 ### BaseKotlin,base为依赖包
 
