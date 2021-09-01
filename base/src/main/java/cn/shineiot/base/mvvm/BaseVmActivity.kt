@@ -11,16 +11,26 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import cn.shineiot.base.utils.ActManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlin.coroutines.CoroutineContext
 
-abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
+abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity(),CoroutineScope {
     lateinit var mContext: FragmentActivity
 
     protected open lateinit var mViewModel: VM
+    //job用于控制协程,后面launch{}启动的协程,返回的job就是这个job对象
+    private lateinit var job: Job
+
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.Main
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getBinding().root)
 
+        job = Job()
         mContext = this
         ActManager.addActivity(mContext)
 

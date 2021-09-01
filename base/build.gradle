@@ -1,4 +1,5 @@
 import cn.shineiot.versionplugin.BuildConfig
+import cn.shineiot.versionplugin.BuildVersion
 
 plugins{
     id 'cn.shineiot.versionplugin' //首行
@@ -13,11 +14,11 @@ android {
     buildFeatures {
         viewBinding = true
     }
-    compileSdkVersion 30
+    compileSdkVersion BuildVersion.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 30
+        minSdkVersion BuildVersion.minSdkVersion
+        targetSdkVersion BuildVersion.targetSdkVersion
 
         versionCode 1
         versionName "1.0"

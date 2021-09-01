@@ -4,11 +4,10 @@ package cn.shineiot.versionplugin
  * 配置和 build相关的
  */
 object BuildVersion {
-    const val compileSdkVersion = 29
-    const val buildToolsVersion = "29.0.2"
-    const val minSdkVersion = 17
-    const val targetSdkVersion = 26
-    const val versionCode = 102
+    const val compileSdkVersion = 30
+    const val minSdkVersion = 21
+    const val targetSdkVersion = 30
+    const val versionCode = 1
     const val versionName = "1.0.2"
 }
 
