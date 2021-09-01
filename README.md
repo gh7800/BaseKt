@@ -2,7 +2,7 @@
 
 ### BaseKt,base为依赖包
 
-#### 依赖方式  `implementation 'com.github.gh7800:BaseKt:1.0.4'`
+#### App依赖方式  `implementation 'com.github.gh7800:BaseKt:1.0.5'`
 
 #### 发布tag方法
 ##### 1、git tag 1.0   //添加tag

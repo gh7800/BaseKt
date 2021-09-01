@@ -4,6 +4,7 @@ import androidx.viewbinding.ViewBinding
 import cn.shineiot.base.databinding.ActivityMainBinding
 import cn.shineiot.base.mvp.BaseMVPActivity
 import cn.shineiot.base.mvvm.BaseVmActivity
+import kotlinx.coroutines.launch
 
 class MainActivity : BaseVmActivity<MainViewModel>() {
     lateinit var viewBinding : ActivityMainBinding
