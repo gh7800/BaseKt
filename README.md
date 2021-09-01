@@ -1,8 +1,8 @@
-# [![最新版 1.0.3](https://jitpack.io/v/gh7800/BaseKt.svg)](https://jitpack.io/#gh7800/BaseKt)
+# [![](https://jitpack.io/v/gh7800/BaseKt.svg)](https://jitpack.io/#gh7800/BaseKt)
 
 ### BaseKt,base为依赖包
 
-#### 依赖方式  `implementation 'com.github.gh7800:BaseKt:1.0.3'`
+#### 依赖方式  `implementation 'com.github.gh7800:BaseKt:1.0.4'`
 
 #### 发布tag方法
 ##### 1、git tag 1.0   //添加tag
