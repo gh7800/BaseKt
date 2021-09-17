@@ -23,7 +23,7 @@ class MainActivity : BaseVmActivity<MainViewModel>() {
     }
 
     override fun initView() {
-        viewBinding.textView.text = "Hello"
+        viewBinding.textView.text = "Hello-1"
 
     }
 
