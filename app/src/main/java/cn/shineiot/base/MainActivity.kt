@@ -24,7 +24,6 @@ class MainActivity : BaseVmActivity<MainViewModel>() {
 
     override fun initView() {
         viewBinding.textView.text = "Hello-1-1"
-
     }
 
 }
