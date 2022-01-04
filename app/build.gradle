@@ -8,8 +8,9 @@ plugins {
 android {
 
     buildFeatures {
-        viewBinding = true
+        viewBinding true
     }
+
     compileSdkVersion 30
 
     defaultConfig {
