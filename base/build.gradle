@@ -12,8 +12,9 @@ group = 'com.github.gh7800'
 
 android {
     buildFeatures {
-        viewBinding = true
+        viewBinding true
     }
+
     compileSdkVersion BuildVersion.compileSdkVersion
 
     defaultConfig {
