@@ -8,71 +8,40 @@ import cn.shineiot.base.BaseApplication
 /**
  * @author gf63
  */
-object ToastUtil {
-    private val toast: Toast by lazy { Toast.makeText(BaseApplication.context(),"",Toast.LENGTH_SHORT) }
+class ToastUtil {
 
-    /**
-     * 默认居下显示
-     */
-    @SuppressLint("ShowToast")
-    fun show(msg: String?, duration : Int = Toast.LENGTH_SHORT) {
-        if(null == msg){
-            return
+    companion object {
+        /**
+         * 默认居下显示
+         */
+        var toast: Toast? = null
+
+        @SuppressLint("ShowToast")
+        fun show(msg: String?, duration: Int = Toast.LENGTH_SHORT) {
+            if (msg?.isEmpty() == true) return
+            if (toast == null) {
+                toast = Toast.makeText(BaseApplication.context(), null, duration)
+            }
+            toast?.setText(msg)
+            toast?.show()
         }
 
-        toast.setText(msg)
-        toast.duration = duration
-        toast.setGravity(Gravity.BOTTOM, 0, 200)
-        toast.show()
-    }
 
-    /**
-     * 默认居下显示
-     */
-    @SuppressLint("ShowToast")
-    fun showToast(msg: String?, duration : Int = Toast.LENGTH_SHORT) {
-        if(null == msg){
-            return
+        /**
+         * 默认居下显示
+         */
+        fun showToast(msg: String?, duration: Int = Toast.LENGTH_SHORT) {
+            if (msg?.isEmpty() == true) return
+            show(msg, duration)
         }
 
-        toast.setText(msg)
-        toast.duration = duration
-        toast.setGravity(Gravity.BOTTOM, 0, 200)
-        toast.show()
-    }
-
-    /**
-     * 居中显示
-     * @param msg
-     */
-    @SuppressLint("ShowToast")
-    fun showToastCenter(msg: String?, duration : Int = Toast.LENGTH_SHORT) {
-        if(null == msg){
-            return
+        /**
+         * 取消toast
+         */
+        fun cancel(){
+            toast?.cancel()
+            toast = null
         }
-
-        toast.setText(msg)
-        toast.setGravity(Gravity.CENTER, 0, 0)
-        toast.show()
     }
 
-    /**
-     * 居中显示
-     * @param msg
-     */
-    @SuppressLint("ShowToast")
-    fun showToastTop(msg: String?, duration : Int = Toast.LENGTH_SHORT) {
-        if(null == msg){
-            return
-        }
-
-        toast.setText(msg)
-        toast.setGravity(Gravity.TOP, 0, 0)
-        toast.show()
-    }
-
-
-    fun cancelToast() {
-        toast.cancel()
-    }
 }

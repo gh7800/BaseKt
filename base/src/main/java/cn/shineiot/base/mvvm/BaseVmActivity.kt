@@ -1,9 +1,12 @@
 package cn.shineiot.base.mvvm
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
@@ -14,6 +17,7 @@ import cn.shineiot.base.utils.ActManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import java.util.*
 import kotlin.coroutines.CoroutineContext
 
 abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity(),CoroutineScope {
@@ -25,6 +29,14 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity(),Coroutin
 
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
+
+    private var resultCallBack: Deque<(ActivityResult) -> Unit> = ArrayDeque()
+    private val activityForResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            resultCallBack.pop()?.let {
+                it(result)
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +79,18 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity(),Coroutin
 
     open fun observe() {}
     open fun initData() {}
+
+    /**
+     * 封装startActivityForResult
+     */
+    protected fun startActivityForResult(
+        cls: Class<*>,
+        block: Intent.() -> Unit = {},
+        callBack: (result: ActivityResult) -> Unit
+    ) {
+        resultCallBack.push(callBack)
+        activityForResult.launch(Intent(this, cls).apply(block))
+    }
 
     /**
      * 打开软键盘

@@ -1,11 +1,13 @@
 package cn.shineiot.base
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import kotlin.properties.Delegates
 
 open class BaseApplication : Application() {
     companion object {
+        @SuppressLint("StaticFieldLeak")
         private lateinit var context: Context
 
         @JvmStatic

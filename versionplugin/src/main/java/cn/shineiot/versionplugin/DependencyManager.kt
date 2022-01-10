@@ -18,7 +18,7 @@ object BuildConfig {
     const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:1.5.20"
 
     //AndroidX
-    const val appcompat = "androidx.appcompat:appcompat:1.2.0"
+    const val appcompat = "androidx.appcompat:appcompat:1.3.1"
     const val recyclerview = "androidx.recyclerview:recyclerview:1.2.0"
     const val cardview = "androidx.cardview:cardview:1.0.0"
     const val multidex = "androidx.multidex:multidex:2.0.1"
