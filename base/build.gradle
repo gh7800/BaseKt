@@ -22,7 +22,7 @@ android {
         targetSdkVersion BuildVersion.targetSdkVersion
 
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.6" //标记tag版本号
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'

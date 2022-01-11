@@ -99,8 +99,8 @@ public class DownLoadUtil {
                 builder = new NotificationCompat.Builder(mcontext, "MyChannelId3");
                 builder2 = new NotificationCompat.Builder(mcontext, "MyChannelId4");
             } else {
-                builder = new NotificationCompat.Builder(BaseApplication.context(), null);
-                builder2 = new NotificationCompat.Builder(mcontext, null);
+                builder = new NotificationCompat.Builder(BaseApplication.context());
+                builder2 = new NotificationCompat.Builder(mcontext);
             }
 
             builder.setContentTitle("正在更新...") //设置通知标题
@@ -257,12 +257,6 @@ public class DownLoadUtil {
                 downProgressListener.downResult(false,result.getAbsolutePath());
             }
             mcontext = null;
-        }
-
-        @Override
-        protected void onCancelled() {
-            super.onCancelled();
-            //notificationManager.cancel(1);
         }
 
         @Override
