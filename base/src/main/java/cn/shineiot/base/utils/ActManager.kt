@@ -26,13 +26,6 @@ object ActManager {
         }
     }
 
-    fun finishActivitys(clazz: Activity) {
-        if (activityStack.contains(clazz)) {
-            activityStack.remove(clazz)
-            clazz.finish()
-        }
-    }
-
     /**
      * finish the activity of afferent class
      */

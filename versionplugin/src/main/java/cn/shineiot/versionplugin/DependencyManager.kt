@@ -31,6 +31,7 @@ object BuildConfig {
     const val material_dialogs_lifecycle = "com.afollestad.material-dialogs:lifecycle:3.2.1"
 
     const val lifecycle_viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+    const val lifecycle_common = "androidx.lifecycle:lifecycle-common-java8:2.2.0"
     const val kotlinx_coroutines_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1"
 
     const val retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
@@ -50,7 +51,7 @@ object BuildConfig {
     const val AndroidAutoSize = "com.github.JessYanCoding:AndroidAutoSize:1.2.1"
     const val permissionx = "com.permissionx.guolindev:permissionx:1.4.0"
 
-    const val leakcanary = "com.squareup.leakcanary:leakcanary-android:2.4"
+    const val leakcanary = "com.squareup.leakcanary:leakcanary-android:2.8.1"
     const val crashreport = "com.tencent.bugly:crashreport:3.4.4"
     const val matisse = "com.zhihu.android:matisse:0.5.3-beta3"
     const val photoView = "com.github.chrisbanes:PhotoView:2.0.0"

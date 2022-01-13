@@ -3,6 +3,7 @@
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">24sp</item>
     </style>
+    <!--  字体和图标都显示白色  -->
     <style name="Toolbar.MenuText" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <declare-styleable name="PasswordEditText">
@@ -15,5 +16,12 @@
         <!-- 指定显示的动画xml -->
         <item name="android:windowExitAnimation">@anim/anim_exit_bottom</item>
         <!-- 指定消失的动画xml -->
+    </style>
+
+    <style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <item name="overlapAnchor">false</item>  <!--设置不覆盖锚点-->
+        <!--        <item name="popupMenuBackground">@color/gray</item>-->
+        <item name="android:textColor">@color/C333</item>
+        <item name="android:paddingTop">@dimen/dp_3</item>
     </style>
 </resources>

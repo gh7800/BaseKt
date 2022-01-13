@@ -11,12 +11,13 @@ android {
         viewBinding true
     }
 
-    compileSdkVersion 30
+    compileSdkVersion 31
 
     defaultConfig {
         applicationId "cn.shineiot.base"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 31
+
         versionCode 1
         versionName "1.0"
 
@@ -64,6 +65,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-//    implementation project(path: ':base')
-    implementation 'com.github.gh7800:BaseKt:1.0.7'
+    implementation project(path: ':base')
+//    implementation 'com.github.gh7800:BaseKt:1.0.7'
 }

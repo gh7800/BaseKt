@@ -22,7 +22,7 @@ android {
         targetSdkVersion BuildVersion.targetSdkVersion
 
         versionCode 1
-        versionName "1.0.6" //标记tag版本号
+        versionName "1.0.8" //标记tag版本号
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -56,6 +56,7 @@ dependencies {
     api BuildConfig.material_dialogs_lifecycle
 
     api BuildConfig.lifecycle_viewmodel_ktx
+    api BuildConfig.lifecycle_common
     api BuildConfig.kotlinx_coroutines_android
 
     api BuildConfig.retrofit
