@@ -37,7 +37,7 @@ abstract class BaseVmActivity<VB : ViewBinding,VM : BaseViewModel> : AppCompatAc
     open fun observe() {}
     open fun initData() {}
 
-    protected lateinit var mContext: FragmentActivity
+    protected lateinit var mContext: AppCompatActivity
     protected lateinit var viewBinding : VB
     protected lateinit var mViewModel: VM
 

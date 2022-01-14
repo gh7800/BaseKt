@@ -7,6 +7,7 @@ import cn.shineiot.base.databinding.LayoutToolbarBinding
 import cn.shineiot.base.mvvm.BaseVmActivity
 import cn.shineiot.base.utils.ActManager
 import cn.shineiot.base.utils.DialogUtil
+import com.maning.mndialoglibrary.MToast
 
 class MainActivity : BaseVmActivity<ActivityMainBinding,MainViewModel>() {
     private lateinit var layoutToolbarBinding : LayoutToolbarBinding
@@ -30,9 +31,11 @@ class MainActivity : BaseVmActivity<ActivityMainBinding,MainViewModel>() {
         val homeFragment = HomeFragment()
         transaction.replace(R.id.frameLayout,homeFragment).commitNow()
 
+
     }
 
     fun click(v : View){
+
         ActManager.start(LoginActivity::class.java)
     }
 

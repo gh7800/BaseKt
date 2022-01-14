@@ -4,6 +4,7 @@ import cn.shineiot.base.databinding.ActivityLoginBinding
 import cn.shineiot.base.databinding.LayoutToolbarBinding
 import cn.shineiot.base.mvvm.BaseVmActivity
 import cn.shineiot.base.utils.DialogUtil
+import cn.shineiot.base.utils.ToastUtil
 
 /**
  * @Description login

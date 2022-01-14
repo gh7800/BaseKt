@@ -3,6 +3,7 @@ package cn.shineiot.base
 import cn.shineiot.base.databinding.FragmengHomeBinding
 import cn.shineiot.base.mvvm.BaseVmFragment
 import cn.shineiot.base.utils.ActManager
+import cn.shineiot.base.utils.DialogUtil
 
 /**
  * @Description TODO
@@ -20,6 +21,7 @@ class HomeFragment :BaseVmFragment<FragmengHomeBinding,HomeViewModel>(){
         }
 
         viewBinding.back.text = "fragment-1"
+
     }
 
     override fun dismissDialog() {

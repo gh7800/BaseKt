@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
@@ -22,13 +23,13 @@ abstract class BaseVmFragment<VB : ViewBinding,VM : BaseViewModel> : Fragment() 
     protected abstract fun showDialog()
     protected abstract fun dismissDialog()
 
-    protected lateinit var mContext: Activity
+    protected lateinit var mContext: AppCompatActivity
     protected lateinit var mViewModel: VM
     protected lateinit var viewBinding: VB
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        mContext = context as Activity
+        mContext = context as AppCompatActivity
     }
 
     override fun onCreateView(

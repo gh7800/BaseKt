@@ -5,17 +5,18 @@ buildscript {
         doraemonkit = '3.3.5'
     }
     repositories {
+        maven { url "https://jitpack.io"}
         maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url 'https://maven.aliyun.com/repository/central' }
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
-        google()
-        mavenCentral()
+//        google()
+//        mavenCentral()
         //maven { url 'https://developer.huawei.com/repo/' }
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.1.3"
+        classpath 'com.android.tools.build:gradle:7.0.2'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
@@ -29,16 +30,14 @@ buildscript {
 
 allprojects {
     repositories {
+        maven { url "https://jitpack.io"}
         maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url 'https://maven.aliyun.com/repository/central' }
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
-        google()
-        mavenCentral()
-        maven { url "https://jitpack.io"}
-
-        //jcenter() // Warning: this repository is going to shut down soon
+//        google()
+//        mavenCentral()
 
         //maven { url 'https://developer.huawei.com/repo/' }
     }

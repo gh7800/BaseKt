@@ -1,13 +1,16 @@
 package cn.shineiot.base.utils
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import cn.shineiot.base.BaseApplication
+import cn.shineiot.base.R
 import com.afollestad.materialdialogs.DialogCallback
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.callbacks.onDismiss
 import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
 import com.maning.mndialoglibrary.MProgressDialog
+import com.maning.mndialoglibrary.MStatusDialog
 import com.maning.mndialoglibrary.config.MDialogConfig
 import com.maning.mndialoglibrary.listeners.OnDialogDismissListener
 
@@ -95,4 +98,25 @@ object DialogUtil {
         }
     }
 
+    /**
+     * 带图片的，提交成功
+     */
+    @SuppressLint("UseCompatLoadingForDrawables")
+    fun showSuccess(context: AppCompatActivity, msg: String? = "提交成功", delay : Long = 2000){
+        if(msg?.isNotEmpty() == true){
+            val dialog = MStatusDialog(context)
+            dialog.show(msg, context.getDrawable(R.drawable.icon_success),delay)
+        }
+    }
+
+    /**
+     * 带图片的，加载失败
+     */
+    @SuppressLint("UseCompatLoadingForDrawables")
+    fun showError(context: AppCompatActivity, msg: String?= "加载失败", delay : Long = 2000){
+        if(msg?.isNotEmpty() == true){
+            val dialog = MStatusDialog(context)
+            dialog.show(msg, context.getDrawable(R.drawable.icon_error),delay)
+        }
+    }
 }
