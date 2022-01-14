@@ -66,5 +66,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     implementation project(path: ':base')
-//    implementation 'com.github.gh7800:BaseKt:1.0.7'
+//    implementation 'com.github.gh7800:BaseKt:1.0.8'
 }
