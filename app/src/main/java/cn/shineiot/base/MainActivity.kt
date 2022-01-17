@@ -9,7 +9,6 @@ import cn.shineiot.base.mvvm.BaseVmActivity
 import cn.shineiot.base.utils.ActManager
 import cn.shineiot.base.utils.DialogUtil
 import cn.shineiot.base.utils.StatusBarUtil
-import com.maning.mndialoglibrary.MToast
 
 class MainActivity : BaseVmActivity<ActivityMainBinding,MainViewModel>() {
     private lateinit var layoutToolbarBinding : LayoutToolbarBinding
