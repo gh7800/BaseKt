@@ -20,7 +20,7 @@ class MainActivity : BaseVmActivity<ActivityMainBinding,MainViewModel>() {
     @SuppressLint("SetTextI18n")
     override fun initView() {
         layoutToolbarBinding = LayoutToolbarBinding.bind(viewBinding.root) //获取toolBarBinding
-        StatusBarUtil.setColor(mContext,ContextCompat.getColor(mContext,R.color.white))
+        //StatusBarUtil.setColor(mContext,ContextCompat.getColor(mContext,R.color.white))
 
         setToolBar(layoutToolbarBinding.toolbar,"首页",layoutToolbarBinding.toolbarTitle)
 
