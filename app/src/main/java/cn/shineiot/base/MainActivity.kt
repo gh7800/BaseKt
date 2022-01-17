@@ -2,11 +2,13 @@ package cn.shineiot.base
 
 import android.annotation.SuppressLint
 import android.view.View
+import androidx.core.content.ContextCompat
 import cn.shineiot.base.databinding.ActivityMainBinding
 import cn.shineiot.base.databinding.LayoutToolbarBinding
 import cn.shineiot.base.mvvm.BaseVmActivity
 import cn.shineiot.base.utils.ActManager
 import cn.shineiot.base.utils.DialogUtil
+import cn.shineiot.base.utils.StatusBarUtil
 import com.maning.mndialoglibrary.MToast
 
 class MainActivity : BaseVmActivity<ActivityMainBinding,MainViewModel>() {
@@ -19,6 +21,7 @@ class MainActivity : BaseVmActivity<ActivityMainBinding,MainViewModel>() {
     @SuppressLint("SetTextI18n")
     override fun initView() {
         layoutToolbarBinding = LayoutToolbarBinding.bind(viewBinding.root) //获取toolBarBinding
+        StatusBarUtil.setColor(mContext,ContextCompat.getColor(mContext,R.color.white))
 
         setToolBar(layoutToolbarBinding.toolbar,"首页",layoutToolbarBinding.toolbarTitle)
 
