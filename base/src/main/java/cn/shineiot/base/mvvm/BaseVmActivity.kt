@@ -32,7 +32,7 @@ abstract class BaseVmActivity<VB : ViewBinding,VM : BaseViewModel> : AppCompatAc
     protected abstract fun initView()
 
     protected abstract fun showDialog()
-    protected abstract fun dismissDialog()
+    protected abstract fun dismissDialog(msg : String?)
 
     open fun observe() {}
     open fun initData() {}
@@ -138,7 +138,7 @@ abstract class BaseVmActivity<VB : ViewBinding,VM : BaseViewModel> : AppCompatAc
 
     override fun onDestroy() {
         super.onDestroy()
-        LogUtil.e(this.javaClass.simpleName+"---onResume")
+        LogUtil.e(this.javaClass.simpleName+"---onDestroy")
 
         ActManager.finishActivity(mContext)
     }

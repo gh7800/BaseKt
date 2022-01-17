@@ -40,7 +40,7 @@ class MainActivity : BaseVmActivity<ActivityMainBinding,MainViewModel>() {
     }
 
 
-    override fun dismissDialog() {
+    override fun dismissDialog(msg : String?) {
         DialogUtil.showLoading(mContext)
     }
 

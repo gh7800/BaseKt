@@ -32,7 +32,7 @@ class LoginActivity : BaseVmActivity<ActivityLoginBinding,LoginViewModel>(){
         mViewModel
     }
 
-    override fun dismissDialog() {
+    override fun dismissDialog(msg : String?) {
         DialogUtil.showLoading(mContext)
     }
 

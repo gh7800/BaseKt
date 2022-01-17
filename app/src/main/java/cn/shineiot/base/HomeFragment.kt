@@ -24,7 +24,7 @@ class HomeFragment :BaseVmFragment<FragmengHomeBinding,HomeViewModel>(){
 
     }
 
-    override fun dismissDialog() {
+    override fun dismissDialog(msg : String?) {
     }
 
     override fun showDialog() {
