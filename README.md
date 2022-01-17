@@ -3,7 +3,7 @@
 
 ### MVVM 依赖框架
 
-##### App依赖方式  `implementation 'com.github.gh7800:BaseKt:1.0.7'`
+##### App依赖方式  `implementation 'com.github.gh7800:BaseKt:1.0.9'`
 
 ##### **1.0.5版本与高版本是不兼容的**
 
