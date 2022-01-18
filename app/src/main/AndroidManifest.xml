@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cn.shineiot.base">
+    package="cn.shineiot.basic">
 
     <application
-        android:name=".App"
+        android:name="cn.shineiot.basic.App"
         android:allowBackup="true"
         android:fullBackupOnly="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,7 +20,7 @@
             android:name="design_height_in_dp"
             android:value="640" />
 
-        <activity android:name=".MainActivity"
+        <activity android:name="cn.shineiot.basic.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" android:exported="false"/>
+        <activity android:name="cn.shineiot.basic.LoginActivity" android:exported="false"/>
     </application>
 
 </manifest>

@@ -14,7 +14,7 @@ android {
     compileSdkVersion 31
 
     defaultConfig {
-        applicationId "cn.shineiot.base"
+        applicationId "cn.shineiot.basic"
         minSdkVersion 21
         targetSdkVersion 31
 
