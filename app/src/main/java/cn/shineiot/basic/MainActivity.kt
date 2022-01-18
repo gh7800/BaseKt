@@ -20,11 +20,11 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, MainViewModel>() {
         layoutToolbarBinding = LayoutToolbarBinding.bind(viewBinding.root) //获取toolBarBinding
         //StatusBarUtil.setColor(mContext,ContextCompat.getColor(mContext,R.color.white))
 
-        setToolBar(layoutToolbarBinding.toolbar,"首页",layoutToolbarBinding.toolbarTitle)
+        setToolBar(layoutToolbarBinding.toolbar,"首页",layoutToolbarBinding.toolbarTitle,false)
 
         viewBinding.textView.text = "Hello-1-1"
 
-        layoutToolbarBinding.toolbar.navigationIcon = null
+        //layoutToolbarBinding.toolbar.navigationIcon = null
 
         val manager = supportFragmentManager
         val transaction = manager.beginTransaction()

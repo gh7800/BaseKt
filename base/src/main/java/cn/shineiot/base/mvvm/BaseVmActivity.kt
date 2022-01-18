@@ -1,8 +1,10 @@
 package cn.shineiot.base.mvvm
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
@@ -28,11 +30,12 @@ import kotlin.coroutines.CoroutineContext
 abstract class BaseVmActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatActivity(),
     CoroutineScope {
 
+    //必须被重写
     abstract fun viewModelClass(): Class<VM>
     abstract fun initView()
     abstract fun showDialog()
     abstract fun dismissDialog(msg: String?)
-
+    //可以被重写
     open fun observe() {}
     open fun initData() {}
 
@@ -79,7 +82,8 @@ abstract class BaseVmActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatA
         mViewModel = ViewModelProvider(this).get(viewModelClass())
     }
 
-    fun setToolBar(toolbar: Toolbar, title: String?, textView: AppCompatTextView?) {
+    @SuppressLint("UseCompatLoadingForDrawables")
+    fun setToolBar(toolbar: Toolbar, title: String?, textView: AppCompatTextView?, isBack : Boolean = true, icon : Int = 0) {
         setSupportActionBar(toolbar)
         val actionBar = supportActionBar
         actionBar?.setDisplayShowTitleEnabled(false)
@@ -89,6 +93,13 @@ abstract class BaseVmActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatA
         actionBar?.setHomeButtonEnabled(true)
 
         textView?.text = title
+
+        if(!isBack){
+            toolbar.navigationIcon = null
+        }
+        if(icon != 0){
+            toolbar.navigationIcon = mContext.getDrawable(icon)
+        }
     }
 
     /**

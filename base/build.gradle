@@ -68,14 +68,16 @@ dependencies {
     api BuildConfig.multidex
     api BuildConfig.core_ktx
     api BuildConfig.appcompat
-    api BuildConfig.swiperefreshlayout
-    api BuildConfig.constraintlayout
+    api BuildConfig.cardView
+    api BuildConfig.swipeRefreshLayout
+    api BuildConfig.constraintLayout
     api BuildConfig.material
     api BuildConfig.material_dialogs_core
     api BuildConfig.material_dialogs_input
     api BuildConfig.material_dialogs_lifecycle
+    api BuildConfig.splashScreen
 
-    api BuildConfig.lifecycle_viewmodel_ktx
+    api BuildConfig.lifecycle_viewModel_ktx
     api BuildConfig.lifecycle_common
     api BuildConfig.kotlinx_coroutines_android
 
@@ -92,17 +94,17 @@ dependencies {
 
     api BuildConfig.MNProgressHUD
 
-    api BuildConfig.agentweb_core
+    api BuildConfig.agentWebCore
     api BuildConfig.AndroidAutoSize
-    api BuildConfig.permissionx
+    api BuildConfig.permissionX
 
     debugApi BuildConfig.leakcanary
-    api BuildConfig.crashreport
+    api BuildConfig.crashReport
     api BuildConfig.matisse
     api BuildConfig.photoView
     api BuildConfig.androidFilePicker
 
-    api BuildConfig.tbssdk
+    api BuildConfig.tbsSdk
     api BuildConfig.zxing_library
 
     /*debugApi ("com.didichuxing.doraemonkit:dokitx:$doraemonkit"){
