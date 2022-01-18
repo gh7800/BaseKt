@@ -25,7 +25,7 @@ project.afterEvaluate {
             debug(MavenPublication) {
                 from components.debug
                 groupId = 'com.github.gh7800'
-                artifactId = sourceJar
+                artifactId = 'BaseKt-debug'
                 version = '1.2.0'
             }
         }
