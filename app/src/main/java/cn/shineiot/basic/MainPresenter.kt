@@ -1,6 +1,6 @@
 package cn.shineiot.basic
 
-import cn.shineiot.basic.mvp.BasePresenter
+import cn.shineiot.base.mvp.BasePresenter
 
 class MainPresenter : BasePresenter<MainView>() {
 }

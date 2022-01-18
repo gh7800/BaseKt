@@ -47,6 +47,10 @@ android {
         }
     }
 
+    /*lint {
+        isCheckDependencies true
+    }*/
+
 }
 
 dependencies {

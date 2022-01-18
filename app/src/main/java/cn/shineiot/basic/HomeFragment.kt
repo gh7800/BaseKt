@@ -1,15 +1,15 @@
 package cn.shineiot.basic
 
+import cn.shineiot.base.mvvm.BaseVmFragment
+import cn.shineiot.base.utils.ActManager
 import cn.shineiot.basic.databinding.FragmengHomeBinding
-import cn.shineiot.basic.mvvm.BaseVmFragment
-import cn.shineiot.basic.utils.ActManager
 
 /**
  * @Description TODO
  * @Author : GF63
  * @Date : 2022/1/13 16:44
  */
-class HomeFragment :BaseVmFragment<FragmengHomeBinding,HomeViewModel>(){
+class HomeFragment : BaseVmFragment<FragmengHomeBinding, HomeViewModel>(){
     override fun viewModelClass(): Class<HomeViewModel> {
         return HomeViewModel::class.java
     }

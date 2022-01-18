@@ -1,6 +1,7 @@
 package cn.shineiot.basic
 
 import android.annotation.SuppressLint
+import cn.shineiot.base.BaseApplication
 import me.jessyan.autosize.AutoSizeConfig
 import me.jessyan.autosize.unit.Subunits
 

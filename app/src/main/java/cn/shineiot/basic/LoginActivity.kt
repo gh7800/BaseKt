@@ -1,16 +1,16 @@
 package cn.shineiot.basic
 
+import cn.shineiot.base.mvvm.BaseVmActivity
+import cn.shineiot.base.utils.DialogUtil
 import cn.shineiot.basic.databinding.ActivityLoginBinding
 import cn.shineiot.basic.databinding.LayoutToolbarBinding
-import cn.shineiot.basic.mvvm.BaseVmActivity
-import cn.shineiot.basic.utils.DialogUtil
 
 /**
  * @Description login
  * @Author : GF63
  * @Date : 2022/1/12 16:36
  */
-class LoginActivity : BaseVmActivity<ActivityLoginBinding,LoginViewModel>(){
+class LoginActivity : BaseVmActivity<ActivityLoginBinding, LoginViewModel>(){
     private lateinit var toolBinding : LayoutToolbarBinding
 
     override fun viewModelClass(): Class<LoginViewModel> {

@@ -2,13 +2,13 @@ package cn.shineiot.basic
 
 import android.annotation.SuppressLint
 import android.view.View
+import cn.shineiot.base.mvvm.BaseVmActivity
+import cn.shineiot.base.utils.ActManager
+import cn.shineiot.base.utils.DialogUtil
 import cn.shineiot.basic.databinding.ActivityMainBinding
 import cn.shineiot.basic.databinding.LayoutToolbarBinding
-import cn.shineiot.basic.mvvm.BaseVmActivity
-import cn.shineiot.basic.utils.ActManager
-import cn.shineiot.basic.utils.DialogUtil
 
-class MainActivity : BaseVmActivity<ActivityMainBinding,MainViewModel>() {
+class MainActivity : BaseVmActivity<ActivityMainBinding, MainViewModel>() {
     private lateinit var layoutToolbarBinding : LayoutToolbarBinding
 
     override fun viewModelClass(): Class<MainViewModel> {

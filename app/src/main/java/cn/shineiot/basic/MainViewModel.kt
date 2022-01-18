@@ -1,6 +1,6 @@
 package cn.shineiot.basic
 
-import cn.shineiot.basic.mvvm.BaseViewModel
+import cn.shineiot.base.mvvm.BaseViewModel
 
 class MainViewModel : BaseViewModel() {
 }
