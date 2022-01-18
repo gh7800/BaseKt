@@ -15,7 +15,7 @@ object BuildVersion {
  * 项目相关配置
  */
 object BuildConfig {
-    const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:1.5.20"
+    const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.20"
 
     //AndroidX
     const val appcompat = "androidx.appcompat:appcompat:1.3.1"

@@ -20,13 +20,13 @@ project.afterEvaluate {
                 from components.release
                 groupId = 'com.github.gh7800'
                 artifactId = sourceJar
-                version = '1.2.0'
+                version = '1.2.3'
             }
             debug(MavenPublication) {
                 from components.debug
                 groupId = 'com.github.gh7800'
                 artifactId = 'BaseKt-debug'
-                version = '1.2.0'
+                version = '1.2.3'
             }
         }
     }
