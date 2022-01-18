@@ -16,12 +16,12 @@ import cn.shineiot.base.utils.LogUtil
  * BaseMVVMFragment
  */
 abstract class BaseVmFragment<VB : ViewBinding,VM : BaseViewModel> : Fragment() {
-    protected abstract fun viewModelClass(): Class<VM>
-    protected abstract fun initView()
-    open fun observe() {}
-    protected abstract fun showDialog()
-    protected abstract fun dismissDialog(msg : String?)
+    abstract fun viewModelClass(): Class<VM>
+    abstract fun initView()
+    abstract fun showDialog()
+    abstract fun dismissDialog(msg : String?)
 
+    open fun observe() {}
     protected lateinit var mContext: AppCompatActivity
     protected lateinit var mViewModel: VM
     protected lateinit var viewBinding: VB
@@ -65,6 +65,6 @@ abstract class BaseVmFragment<VB : ViewBinding,VM : BaseViewModel> : Fragment() 
 
     override fun onDestroy() {
         super.onDestroy()
-        LogUtil.e(this.javaClass.simpleName+"---onPause")
+        LogUtil.e(this.javaClass.simpleName+"---onDestroy")
     }
 }

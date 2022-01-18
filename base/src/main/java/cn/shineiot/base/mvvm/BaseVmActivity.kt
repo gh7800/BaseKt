@@ -25,18 +25,19 @@ import kotlin.coroutines.CoroutineContext
 /**
  * Base-Mvvm-Activity
  */
-abstract class BaseVmActivity<VB : ViewBinding,VM : BaseViewModel> : AppCompatActivity(),CoroutineScope {
-    protected abstract fun viewModelClass(): Class<VM>
-    protected abstract fun initView()
+abstract class BaseVmActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatActivity(),
+    CoroutineScope {
 
-    protected abstract fun showDialog()
-    protected abstract fun dismissDialog(msg : String?)
+    abstract fun viewModelClass(): Class<VM>
+    abstract fun initView()
+    abstract fun showDialog()
+    abstract fun dismissDialog(msg: String?)
 
     open fun observe() {}
     open fun initData() {}
 
     protected lateinit var mContext: AppCompatActivity
-    protected lateinit var viewBinding : VB
+    protected lateinit var viewBinding: VB
     protected lateinit var mViewModel: VM
 
     //job用于控制协程,后面launch{}启动的协程,返回的job就是这个job对象
@@ -54,7 +55,7 @@ abstract class BaseVmActivity<VB : ViewBinding,VM : BaseViewModel> : AppCompatAc
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewBinding = ViewBindingCreator.create(javaClass,layoutInflater)
+        viewBinding = ViewBindingCreator.create(javaClass, layoutInflater)
         setContentView(viewBinding.root)
 
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT //设置竖屏
@@ -126,17 +127,17 @@ abstract class BaseVmActivity<VB : ViewBinding,VM : BaseViewModel> : AppCompatAc
 
     override fun onResume() {
         super.onResume()
-        LogUtil.e(this.javaClass.simpleName+"---onResume")
+        LogUtil.e(this.javaClass.simpleName + "---onResume")
     }
 
     override fun onPause() {
         super.onPause()
-        LogUtil.e(this.javaClass.simpleName+"---onPause")
+        LogUtil.e(this.javaClass.simpleName + "---onPause")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        LogUtil.e(this.javaClass.simpleName+"---onDestroy")
+        LogUtil.e(this.javaClass.simpleName + "---onDestroy")
 
         ActManager.finishActivity(mContext)
     }
