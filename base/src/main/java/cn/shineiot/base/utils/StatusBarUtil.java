@@ -19,7 +19,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import cn.shineiot.basic.R;
+import cn.shineiot.base.R;
 
 
 /**

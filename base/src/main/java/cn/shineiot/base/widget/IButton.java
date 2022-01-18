@@ -7,7 +7,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.util.AttributeSet;
 
-import cn.shineiot.basic.R;
+import cn.shineiot.base.R;
 
 /**
  * @author gf63

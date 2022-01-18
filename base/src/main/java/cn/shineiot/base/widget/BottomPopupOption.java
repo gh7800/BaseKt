@@ -18,7 +18,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.LinearLayoutCompat;
 
-import cn.shineiot.basic.R;
+import cn.shineiot.base.R;
 
 
 /**

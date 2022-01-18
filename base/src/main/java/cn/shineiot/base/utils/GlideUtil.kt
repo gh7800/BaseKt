@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.widget.ImageView
 import androidx.appcompat.widget.AppCompatImageView
-import cn.shineiot.basic.R
+import cn.shineiot.base.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CenterCrop

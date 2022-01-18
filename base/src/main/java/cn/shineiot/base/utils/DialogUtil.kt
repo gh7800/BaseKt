@@ -3,7 +3,7 @@ package cn.shineiot.base.utils
 import android.annotation.SuppressLint
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
-import cn.shineiot.basic.R
+import cn.shineiot.base.R
 import com.afollestad.materialdialogs.DialogCallback
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.callbacks.onDismiss

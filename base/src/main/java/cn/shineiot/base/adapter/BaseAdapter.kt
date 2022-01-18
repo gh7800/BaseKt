@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.ListUpdateCallback
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import cn.shineiot.base.bean.Pagination
-import cn.shineiot.basic.R
-import cn.shineiot.basic.databinding.ErrorLayoutBinding
+import cn.shineiot.base.R
+import cn.shineiot.base.databinding.ErrorLayoutBinding
 import kotlinx.coroutines.*
 import java.util.*
 import kotlin.collections.ArrayList

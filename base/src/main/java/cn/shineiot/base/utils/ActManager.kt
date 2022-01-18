@@ -4,7 +4,7 @@ import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Parcelable
-import cn.shineiot.basic.R
+import cn.shineiot.base.R
 import java.util.*
 
 /**

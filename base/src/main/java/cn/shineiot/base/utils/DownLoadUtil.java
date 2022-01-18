@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.shineiot.base.BaseApplication;
-import cn.shineiot.basic.R;
+import cn.shineiot.base.R;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;

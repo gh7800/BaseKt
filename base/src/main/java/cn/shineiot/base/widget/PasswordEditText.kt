@@ -11,7 +11,7 @@ import android.text.method.PasswordTransformationMethod
 import android.util.AttributeSet
 import android.view.MotionEvent
 import androidx.appcompat.widget.AppCompatEditText
-import cn.shineiot.basic.R
+import cn.shineiot.base.R
 
 class PasswordEditText(
     context: Context,
