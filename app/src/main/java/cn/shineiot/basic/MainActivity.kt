@@ -35,7 +35,6 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, MainViewModel>() {
     }
 
     fun click(v : View){
-
         ActManager.start(LoginActivity::class.java)
     }
 

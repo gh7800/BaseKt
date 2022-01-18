@@ -22,12 +22,6 @@ project.afterEvaluate {
                 artifactId = 'BaseKt'
                 version = '1.2.5'
             }
-            debug(MavenPublication) {
-                from components.debug
-                groupId = 'com.github.gh7800'
-                artifactId = 'BaseKt-debug'
-                version = '1.2.5'
-            }
         }
     }
 }
