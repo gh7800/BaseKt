@@ -34,7 +34,7 @@ abstract class BaseVmActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatA
     abstract fun viewModelClass(): Class<VM>
     abstract fun initView()
     abstract fun showDialog()
-    abstract fun dismissDialog(msg: String?)
+    abstract fun dismissDialog(msg: String ?= null)
     //可以被重写
     open fun observe() {}
     open fun initData() {}

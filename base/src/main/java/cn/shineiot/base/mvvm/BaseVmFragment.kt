@@ -19,7 +19,7 @@ abstract class BaseVmFragment<VB : ViewBinding,VM : BaseViewModel> : Fragment() 
     abstract fun viewModelClass(): Class<VM>
     abstract fun initView()
     abstract fun showDialog()
-    abstract fun dismissDialog(msg : String?)
+    abstract fun dismissDialog(msg : String? = null)
 
     open fun observe() {}
     protected lateinit var mContext: AppCompatActivity
