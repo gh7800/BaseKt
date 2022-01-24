@@ -28,7 +28,7 @@ import kotlin.coroutines.CoroutineContext
  */
 open class BaseAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>, CoroutineScope {
     //job用于控制协程,后面launch{}启动的协程,返回的job就是这个job对象
-    private lateinit var job: Job
+    private var job: Job
 
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
@@ -89,7 +89,7 @@ open class BaseAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>, Corou
     fun updateData(position: Int, t: T? = null) {
         notifyItemChanged(position)
         if (null != t) {
-            Collections.replaceAll(mList as List<T?>?, t, mList[position])
+            Collections.replaceAll(mList, t, mList[position])
         }
     }
 

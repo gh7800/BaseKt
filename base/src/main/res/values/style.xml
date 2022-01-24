@@ -6,10 +6,6 @@
     <!--  字体和图标都显示白色  -->
     <style name="Toolbar.MenuText" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-    <declare-styleable name="PasswordEditText">
-        <attr name="hideDrawable" format="reference"/>
-        <attr name="showDrawable" format="reference"/>
-    </declare-styleable>
 
     <style name="PopupWindow_anim_style">
         <item name="android:windowEnterAnimation">@anim/anim_enter_bottom</item>

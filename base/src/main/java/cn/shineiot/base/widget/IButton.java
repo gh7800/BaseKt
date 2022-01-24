@@ -35,7 +35,7 @@ public class IButton extends androidx.appcompat.widget.AppCompatButton {
         normal_color = typeArray.getColor(R.styleable.IButton_normal_color,0);
         pressed_color = typeArray.getColor(R.styleable.IButton_pressed_color,0);
         enabled_color = typeArray.getColor(R.styleable.IButton_enabled_color,0);
-        radius = (int) typeArray.getDimension(R.styleable.IButton_radius,0.0f);
+        radius = (int) typeArray.getDimension(R.styleable.IButton_radius,0F);
         typeArray.recycle();
 
         init();

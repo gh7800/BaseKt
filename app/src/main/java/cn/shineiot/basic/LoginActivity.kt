@@ -21,7 +21,7 @@ class LoginActivity : BaseVmActivity<ActivityLoginBinding, LoginViewModel>(){
         toolBinding = LayoutToolbarBinding.bind(viewBinding.root)
         setToolBar(toolBinding.toolbar,"login",toolBinding.toolbarTitle)
 
-        viewBinding.tv.text = "login"
+//        viewBinding.tv.text = "login"
 
     }
 

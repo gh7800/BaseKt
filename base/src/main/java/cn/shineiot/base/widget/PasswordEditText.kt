@@ -13,6 +13,10 @@ import android.view.MotionEvent
 import androidx.appcompat.widget.AppCompatEditText
 import cn.shineiot.base.R
 
+/**
+ * 密码输入
+ */
+@Deprecated("推荐用 → IEditText" )
 class PasswordEditText(
     context: Context,
     attrs: AttributeSet? = null

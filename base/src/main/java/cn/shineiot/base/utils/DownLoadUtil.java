@@ -34,6 +34,7 @@ import okhttp3.Response;
 
 /**
  * @author zhang
+ * 下载工具
  */
 
 public class DownLoadUtil {
@@ -50,8 +51,8 @@ public class DownLoadUtil {
         return okhttpclient;
     }
 
-    public static DownLoadTask getInstance(Context context) {
-        mcontext = context;
+    public static DownLoadTask getInstance() {
+        mcontext = BaseApplication.context();
         downLoadTask = new DownLoadTask();
         return downLoadTask;
     }
@@ -80,12 +81,12 @@ public class DownLoadUtil {
             notificationManager = (NotificationManager) BaseApplication.context().getSystemService(Context.NOTIFICATION_SERVICE);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 List<NotificationChannel> list = new ArrayList<NotificationChannel>();
-                NotificationChannel channel = new NotificationChannel("MyChannelId3", "Download", NotificationManager.IMPORTANCE_LOW);
+                NotificationChannel channel = new NotificationChannel("DownloadID1", "Download", NotificationManager.IMPORTANCE_LOW);
                 channel.enableVibration(false);
                 channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
                 channel.setGroup("MyGroupId");
 
-                NotificationChannel channel2 = new NotificationChannel("MyChannelId4", "DownloadMessage", NotificationManager.IMPORTANCE_HIGH);
+                NotificationChannel channel2 = new NotificationChannel("DownloadID2", "DownloadMessage", NotificationManager.IMPORTANCE_HIGH);
                 channel2.enableVibration(false);
                 channel2.setGroup("MyGroupId");
 
@@ -93,16 +94,13 @@ public class DownLoadUtil {
                 list.add(channel2);
                 notificationManager.createNotificationChannels(list);
 
-                builder = new NotificationCompat.Builder(mcontext, "MyChannelId3");
-                builder2 = new NotificationCompat.Builder(mcontext, "MyChannelId4");
-            } else {
-                builder = new NotificationCompat.Builder(BaseApplication.context());
-                builder2 = new NotificationCompat.Builder(mcontext);
             }
+            builder = new NotificationCompat.Builder(mcontext, "DownloadID1");
+            builder2 = new NotificationCompat.Builder(mcontext, "DownloadID2");
 
             builder.setContentTitle("正在更新...") //设置通知标题
-                    .setSmallIcon(R.drawable.icon_logo)
-                    .setLargeIcon(BitmapFactory.decodeResource(BaseApplication.context().getResources(), R.drawable.icon_logo)) //设置通知的大图标
+                    .setSmallIcon(R.drawable.ic_launcher_round)
+                    .setLargeIcon(BitmapFactory.decodeResource(BaseApplication.context().getResources(), R.drawable.ic_launcher_round)) //设置通知的大图标
                     .setDefaults(Notification.DEFAULT_LIGHTS) //设置通知的提醒方式： 呼吸灯
                     .setPriority(NotificationCompat.PRIORITY_MAX) //设置通知的优先级：最大
                     .setAutoCancel(false)//设置通知被点击一次是否自动取消
@@ -110,8 +108,8 @@ public class DownLoadUtil {
                     .setProgress(100, 0, false);
 
             builder2.setContentText("移动办公正在下载...")
-                    .setSmallIcon(R.drawable.icon_logo)
-                    .setLargeIcon(BitmapFactory.decodeResource(BaseApplication.context().getResources(), R.drawable.icon_logo)) //设置通知的大图标
+                    .setSmallIcon(R.drawable.ic_launcher_round)
+                    .setLargeIcon(BitmapFactory.decodeResource(BaseApplication.context().getResources(), R.drawable.ic_launcher_round)) //设置通知的大图标
                     .setContentTitle("版本更新")
                     .setDefaults(Notification.DEFAULT_LIGHTS)
                     .setAutoCancel(true);
@@ -125,7 +123,9 @@ public class DownLoadUtil {
 
         @Override
         protected void onPreExecute() {
-            initNotification();
+            downProgressListener.downStart();
+
+            //initNotification();
 
             mDialog = new Dialog(mcontext);
             mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -140,7 +140,7 @@ public class DownLoadUtil {
             lp.alpha = 1f;//完全不透明
             dialogWindow.setAttributes(lp);
             mDialog.setCanceledOnTouchOutside(false);
-//            mDialog.show();
+            // mDialog.show();
 
         }
 
@@ -226,16 +226,13 @@ public class DownLoadUtil {
                 tv.setText("下载中.. " + value + "%");
                 progressBar.setProgress(value);
 
-//                RemoteViews remoteViews = new RemoteViews(mcontext.getPackageName(),R.layout.dialog_update);
-//                remoteViews.setProgressBar(R.id.updateProgressBar,100,value,false);
-//                remoteViews.setTextViewText(R.id.updateTv,"下载进度:" + value + "%");
-//                notification.contentView = remoteViews;
+                downProgressListener.downProgress("下载中.. " + value + "%");
 
-                builder.setProgress(100, value, false);
-                builder.setContentText("下载进度:" + value + "%");
-
-                notification = builder.build();
-                notificationManager.notify(1, notification);
+//                builder.setProgress(100, value, false);
+//                builder.setContentText("下载进度:" + value + "%");
+//
+//                notification = builder.build();
+//                notificationManager.notify(1, notification);
             }
         }
 
@@ -247,7 +244,6 @@ public class DownLoadUtil {
             if (null != result && isDownFinish) {
                 isDownFinish = false;
                 downProgressListener.downResult(true,result.getAbsolutePath());
-                //ScreenUtil.INSTANCE.installApk(mcontext, result);
             } else if (null != result && result.exists()) {       //下载失败
                 LogUtil.INSTANCE.e("已删除_" + result.getAbsolutePath());
                 result.delete();
@@ -270,11 +266,15 @@ public class DownLoadUtil {
         public static void setDownProgressListener(DownProgressListener downProgressListener){
             DownLoadTask.downProgressListener = downProgressListener;
         }
-        public static void unsetDownProgressListener(){
+        //取消下载监听。防止内存泄漏
+        public static void cancelDownProgressListener(){
             DownLoadTask.downProgressListener = null;
         }
+
         public interface DownProgressListener {
-            void downResult(boolean result,String path); //下载结果
+            void downStart(); //可以进行初始化通知
+            void downProgress(String progress); //更新下载进度
+            void downResult(boolean result,String path);  //下载结果
         }
 
     }
