@@ -17,6 +17,13 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="ISplashTheme" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_round</item>
+        <item name="windowSplashScreenAnimationDuration">200</item>
+        <item name="postSplashScreenTheme">@style/Theme.Base</item>
+    </style>
+
     <style name="images">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
