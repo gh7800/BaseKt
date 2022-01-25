@@ -12,12 +12,12 @@
 <!--        <item name="windowNoTitle">true</item>-->
     </style>
 
-    <style name="MySplashTheme" parent="Theme.SplashScreen">
+    <!--<style name="MySplashTheme" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/white</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/icon_success</item>
         <item name="windowSplashScreenAnimationDuration">200</item>
         <item name="postSplashScreenTheme">@style/Theme.Base</item>
-    </style>
+    </style>-->
 
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">24sp</item>

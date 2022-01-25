@@ -2,7 +2,6 @@ package cn.shineiot.basic
 
 import android.annotation.SuppressLint
 import android.view.View
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import cn.shineiot.base.mvvm.BaseVmActivity
 import cn.shineiot.base.utils.ActManager
 import cn.shineiot.base.utils.DialogUtil
