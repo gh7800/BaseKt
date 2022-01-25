@@ -2,7 +2,6 @@ package cn.shineiot.basic
 
 import android.annotation.SuppressLint
 import android.view.View
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import cn.shineiot.base.mvvm.BaseVmActivity
 import cn.shineiot.base.utils.ActManager
 import cn.shineiot.base.utils.DialogUtil
@@ -19,8 +18,8 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, MainViewModel>() {
 
     @SuppressLint("SetTextI18n")
     override fun initView() {
-        setTheme(R.style.ISplashTheme)
-        installSplashScreen()
+        //setTheme(R.style.ISplashTheme)
+        //installSplashScreen()
 
         layoutToolbarBinding = LayoutToolbarBinding.bind(viewBinding.root) //获取toolBarBinding
         //StatusBarUtil.setColor(mContext,ContextCompat.getColor(mContext,R.color.white))

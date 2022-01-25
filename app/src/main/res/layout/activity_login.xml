@@ -76,7 +76,6 @@
         android:hint="请输入密码.."
         android:paddingLeft="@dimen/dp_10"
         app:layout_constraintTop_toBottomOf="@id/img"
-        app:et_radius="@dimen/dp_48"
         android:drawablePadding="@dimen/dp_10"
         android:layout_margin="@dimen/dp_10"
         android:drawableLeft="@drawable/icon_lock"

@@ -29,7 +29,7 @@ object BuildConfig {
     const val material_dialogs_core = "com.afollestad.material-dialogs:core:3.3.0"
     const val material_dialogs_input = "com.afollestad.material-dialogs:input:3.3.0"
     const val material_dialogs_lifecycle = "com.afollestad.material-dialogs:lifecycle:3.2.1"
-    const val splashScreen = "androidx.core:core-splashscreen:1.0.0-alpha02"
+    //const val splashScreen = "androidx.core:core-splashscreen:1.0.0-alpha02"
 
     const val lifecycle_viewModel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
     const val lifecycle_common = "androidx.lifecycle:lifecycle-common-java8:2.2.0"
