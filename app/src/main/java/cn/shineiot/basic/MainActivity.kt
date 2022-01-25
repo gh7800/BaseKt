@@ -8,6 +8,7 @@ import cn.shineiot.base.utils.ActManager
 import cn.shineiot.base.utils.DialogUtil
 import cn.shineiot.basic.databinding.ActivityMainBinding
 import cn.shineiot.basic.databinding.LayoutToolbarBinding
+import cn.shineiot.basic.homeFragment.HomeFragment
 
 class MainActivity : BaseVmActivity<ActivityMainBinding, MainViewModel>() {
     private lateinit var layoutToolbarBinding : LayoutToolbarBinding

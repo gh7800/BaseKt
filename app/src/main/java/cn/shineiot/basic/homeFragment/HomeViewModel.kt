@@ -1,4 +1,4 @@
-package cn.shineiot.basic
+package cn.shineiot.basic.homeFragment
 
 import cn.shineiot.base.mvvm.BaseViewModel
 

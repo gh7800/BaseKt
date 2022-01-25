@@ -1,7 +1,9 @@
-package cn.shineiot.basic
+package cn.shineiot.basic.homeFragment
 
 import cn.shineiot.base.mvvm.BaseVmFragment
 import cn.shineiot.base.utils.ActManager
+import cn.shineiot.basic.LoginActivity
+import cn.shineiot.basic.R
 import cn.shineiot.basic.databinding.FragmengHomeBinding
 
 /**
@@ -10,6 +12,10 @@ import cn.shineiot.basic.databinding.FragmengHomeBinding
  * @Date : 2022/1/13 16:44
  */
 class HomeFragment : BaseVmFragment<FragmengHomeBinding, HomeViewModel>(){
+
+    private val adapter by lazy { HomeAdapter(R.layout.item_home) }
+    private val list : MutableList<String> = arrayListOf("登录")
+
     override fun viewModelClass(): Class<HomeViewModel> {
         return HomeViewModel::class.java
     }
@@ -20,6 +26,9 @@ class HomeFragment : BaseVmFragment<FragmengHomeBinding, HomeViewModel>(){
         }
 
         viewBinding.back.text = "fragment-1"
+
+        viewBinding.recyclerview.adapter = adapter
+        adapter.setData(list)
 
     }
 

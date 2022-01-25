@@ -385,7 +385,10 @@ open class BaseAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>, Corou
         }
     }
 
-    open fun convert(itemView: View?, item: T, position: Int) {
+    /**
+     * 重写此方法，即可
+     */
+    open fun convert(itemView: View, item: T, position: Int) {
 
     }
 
