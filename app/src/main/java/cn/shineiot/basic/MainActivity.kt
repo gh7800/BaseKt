@@ -18,8 +18,8 @@ class MainActivity : BaseVmActivity<ActivityMainBinding, MainViewModel>() {
 
     @SuppressLint("SetTextI18n")
     override fun initView() {
-        setTheme(R.style.ISplashTheme)
-        installSplashScreen()
+        //setTheme(R.style.ISplashTheme)
+        //installSplashScreen()
 
         layoutToolbarBinding = LayoutToolbarBinding.bind(viewBinding.root) //获取toolBarBinding
         //StatusBarUtil.setColor(mContext,ContextCompat.getColor(mContext,R.color.white))
