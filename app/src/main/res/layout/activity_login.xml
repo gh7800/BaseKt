@@ -81,12 +81,14 @@
         android:drawableLeft="@drawable/icon_lock"
         app:et_borderWidth="@dimen/dp_2"
         app:et_borderColor="@color/gray"
+        app:et_radius="@dimen/dp_10"
         android:drawableRight="@drawable/icon_base_clear"
         android:paddingRight="@dimen/dp_16"
         android:maxLines="1"
         android:inputType="text"
         android:textSize="@dimen/sp_16"
         android:maxLength="16"
+        android:text="@string/app_name"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

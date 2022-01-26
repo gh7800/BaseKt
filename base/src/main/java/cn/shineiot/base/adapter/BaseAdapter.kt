@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListUpdateCallback
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.viewbinding.ViewBinding
 import cn.shineiot.base.bean.Pagination
 import cn.shineiot.base.R
 import cn.shineiot.base.databinding.ErrorLayoutBinding
@@ -26,7 +27,7 @@ import kotlin.coroutines.CoroutineContext
  *
  * isLoadError 是否加载404 layout
  */
-open class BaseAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>, CoroutineScope {
+abstract class BaseAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>, CoroutineScope {
     //job用于控制协程,后面launch{}启动的协程,返回的job就是这个job对象
     private var job: Job
 
@@ -299,7 +300,7 @@ open class BaseAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>, Corou
 
     override fun getItemViewType(position: Int): Int {
         return if (position == mList.size && mList.size > 0 && null != loadMoreListener && !isLoadEnd) {
-            loadMoreType
+            getViewType(position)
         } else if (mList.isEmpty() && isLoadError) {
             loadErrorViewType
         } else if (mList.isEmpty() && isEmptyLayout) {
@@ -314,8 +315,8 @@ open class BaseAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>, Corou
 
         return when (viewType) {
             loadNormalType -> {
-                val v = LayoutInflater.from(parent.context).inflate(this.mLayoutId!!, parent, false)
-                KtViewHolder(v)
+                //val v = LayoutInflater.from(parent.context).inflate(this.mLayoutId!!, parent, false)
+                KtViewHolder(getViewBinding(viewType, LayoutInflater.from(parent.context), parent))
             }
             loadMoreType -> {
                 val v =
@@ -329,7 +330,8 @@ open class BaseAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>, Corou
                 holder
             }
             loadErrorViewType -> {
-                val errorLayoutBinding = ErrorLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+                val errorLayoutBinding =
+                    ErrorLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 //                val v = LayoutInflater.from(parent.context).inflate(R.layout.error_layout, parent, false)
                 val holder = ErrorLayoutViewHolder(errorLayoutBinding.root)
                 val lp = holder.itemView.layoutParams
@@ -368,7 +370,7 @@ open class BaseAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>, Corou
                     false
                 }
 
-                convert(holder.itemView, item, holder.adapterPosition)
+                convert(holder.viewBinding, item, holder.adapterPosition)
 
             }
             is FootViewHolder -> {
@@ -388,14 +390,20 @@ open class BaseAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>, Corou
     /**
      * 重写此方法，即可
      */
-    open fun convert(itemView: View, item: T, position: Int) {
+    protected abstract fun convert(vb : ViewBinding, item: T, position: Int)
 
-    }
+    /**
+     * 这个多布局判断抽象方法   需实现类 实现操作
+     */
+    protected abstract fun getViewType(position: Int): Int
 
-    open class KtViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
-        open fun <T : View?> getView(id: Int): T {
-            return itemView.findViewById<T>(id)
-        }
+    /**
+     * 获取ViewBinding实现类
+     */
+    abstract fun getViewBinding(viewType: Int, from: LayoutInflater, parent: ViewGroup): ViewBinding
+
+    open class KtViewHolder(viewBinding : ViewBinding) : RecyclerView.ViewHolder(viewBinding.root){
+        val viewBinding : ViewBinding = viewBinding
     }
 
     open class FootViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {

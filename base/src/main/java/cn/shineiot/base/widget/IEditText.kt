@@ -151,12 +151,11 @@ class IEditText constructor(
 
     }
 
-    /**
-     * 点击右侧图片的事件
-     */
+
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent?): Boolean {
+        /**点击右侧图片的事件 */
         if (compoundDrawables[2] != null) {
             if (event?.action == MotionEvent.ACTION_UP) {
                 val touchable = event.x > (width - paddingRight - (rightDrawable?.intrinsicWidth
@@ -176,6 +175,11 @@ class IEditText constructor(
                         this.setText("")
                     }
                 }
+            }
+        }
+        if(isFocusable){
+            if(text?.isEmpty() == false){
+                setHideRightClearDrawable(true)
             }
         }
         return super.onTouchEvent(event)

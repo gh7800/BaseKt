@@ -1,19 +1,23 @@
 package cn.shineiot.basic.homeFragment
 
+import android.view.View
+import cn.shineiot.base.adapter.BaseAdapter
 import cn.shineiot.base.mvvm.BaseVmFragment
 import cn.shineiot.base.utils.ActManager
+import cn.shineiot.base.utils.LogUtil
+import cn.shineiot.base.utils.SnackBarUtil
 import cn.shineiot.basic.LoginActivity
 import cn.shineiot.basic.R
 import cn.shineiot.basic.databinding.FragmengHomeBinding
 
 /**
- * @Description TODO
+ * @Description home
  * @Author : GF63
  * @Date : 2022/1/13 16:44
  */
 class HomeFragment : BaseVmFragment<FragmengHomeBinding, HomeViewModel>(){
 
-    private val adapter by lazy { HomeAdapter(R.layout.item_home) }
+    private val adapter by lazy { HomeAdapter() }
     private val list : MutableList<String> = arrayListOf("登录")
 
     override fun viewModelClass(): Class<HomeViewModel> {
@@ -29,6 +33,16 @@ class HomeFragment : BaseVmFragment<FragmengHomeBinding, HomeViewModel>(){
 
         viewBinding.recyclerview.adapter = adapter
         adapter.setData(list)
+
+        adapter.setItemClickListener(object : BaseAdapter.ItemClick{
+            override fun OnItemClick(v: View, position: Int) {
+                if(v.id == R.id.title){
+                    SnackBarUtil.show(viewBinding.recyclerview,adapter.getItem(position))
+                }else{
+                    SnackBarUtil.show(viewBinding.recyclerview,"item")
+                }
+            }
+        })
 
     }
 
