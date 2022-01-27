@@ -1,7 +1,7 @@
 
 # [![](https://jitpack.io/v/gh7800/BaseKt.svg)](https://jitpack.io/#gh7800/BaseKt)
 
-### MVVM 依赖框架
+### Kotlin MVVM 依赖框架
 
 ##### App依赖方式 : ``` implementation 'com.github.gh7800:BaseKt:Tag_Name ```
 
