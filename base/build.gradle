@@ -105,7 +105,7 @@ dependencies {
     api BuildConfig.androidFilePicker
 
     api BuildConfig.tbsSdk
-    api BuildConfig.zxing_library
+    //api BuildConfig.zxing_library //去除扫一扫防止和第三方com.google.zxing冲突
 
     /*debugApi ("com.didichuxing.doraemonkit:dokitx:$doraemonkit"){
         exclude group: 'com.google.zxing'
