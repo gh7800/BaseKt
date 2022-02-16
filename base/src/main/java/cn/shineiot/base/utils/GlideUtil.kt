@@ -18,7 +18,6 @@ object GlideUtil {
     fun loadFile(context: Context, url: Any, view: ImageView) {
         Glide.with(context)
             .load(url)
-            .skipMemoryCache(true)
             .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
             .into(view)
     }
@@ -27,7 +26,6 @@ object GlideUtil {
         Glide.with(context)
             //.asBitmap()
             .load(url)
-            .skipMemoryCache(false)
             .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
             .into(view)
     }
@@ -38,7 +36,6 @@ object GlideUtil {
         Glide.with(context)
             .load(url)
             .error(R.drawable.icon_error_photo)
-            .skipMemoryCache(true)
             .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
             .transform(CenterCrop(), RoundedCorners(10))
             .into(view)
@@ -48,7 +45,6 @@ object GlideUtil {
     fun loadFileCircle(context: Context, url: Any, view: AppCompatImageView) {
         Glide.with(context)
             .load(url)
-            .skipMemoryCache(true)
             .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
             .transition(withCrossFade())
             .centerCrop()
