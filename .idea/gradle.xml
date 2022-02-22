@@ -24,6 +24,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/base" />
+            <option value="$PROJECT_DIR$/dependence" />
             <option value="$PROJECT_DIR$/versionplugin" />
           </set>
         </option>

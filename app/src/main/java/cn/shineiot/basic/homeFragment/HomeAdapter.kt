@@ -1,17 +1,35 @@
 package cn.shineiot.basic.homeFragment
 
-import android.view.View
-import androidx.appcompat.widget.AppCompatTextView
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.viewbinding.ViewBinding
 import cn.shineiot.base.adapter.BaseAdapter
-import cn.shineiot.basic.R
+import cn.shineiot.basic.databinding.ItemHomeBinding
 
-class HomeAdapter(layout: Int) : BaseAdapter<String>(layout) {
-    override fun convert(itemView: View, item: String, position: Int) {
-        super.convert(itemView, item, position)
+class HomeAdapter : BaseAdapter<String>() {
 
-        //优化viewBinding todo
-        itemView.findViewById<AppCompatTextView>(R.id.title).text = item
-
-//        itemView.title.text = item
+    override fun getViewBinding(
+        viewType: Int,
+        from: LayoutInflater,
+        parent: ViewGroup
+    ): ViewBinding {
+        return ItemHomeBinding.inflate(from,parent,false)
     }
+
+    override fun getViewType(position: Int): Int {
+        return 0
+    }
+
+    override fun convert(vb: ViewBinding, item: String, position: Int) {
+
+        val viewBinding = vb as ItemHomeBinding
+        viewBinding.apply {
+            title.text = item
+            title.setOnClickListener {
+                itemClick?.OnItemClick(it,position)
+            }
+        }
+
+    }
+
 }

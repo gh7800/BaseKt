@@ -1,3 +1,4 @@
 includeBuild("versionplugin") //格式 includeBuild("xxx")
 rootProject.name = "BaseKt"
 include ':app',':base'
+include ':dependence'
