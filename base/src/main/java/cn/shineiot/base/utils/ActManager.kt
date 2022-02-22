@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Parcelable
+import androidx.appcompat.app.AppCompatActivity
 import cn.shineiot.base.R
 import java.util.*
 
@@ -11,19 +12,24 @@ import java.util.*
  * activity 管理栈
  */
 object ActManager {
-    private var activityStack: Stack<Activity> = Stack<Activity>()
+    private var activityStack: Stack<AppCompatActivity> = Stack<AppCompatActivity>()
 
     //添加activity
-    fun addActivity(activity: Activity) {
+    fun addActivity(activity: AppCompatActivity) {
         activityStack.add(activity)
     }
 
     //结束单个Activity
-    fun finishActivity(activity: Activity?) {
+    fun finishActivity(activity: AppCompatActivity?) {
         if (activityStack.contains(activity)) {
             activityStack.remove(activity)
             activity?.finish()
         }
+    }
+
+    /**获取当前的activity*/
+    fun getCurrentActivity() : AppCompatActivity{
+        return activityStack.lastElement()
     }
 
     /**
@@ -43,7 +49,7 @@ object ActManager {
     /**
      * 是否活着
      */
-    fun isLive(activity: Activity): Boolean {
+    fun isLive(activity: AppCompatActivity): Boolean {
         return activityStack.contains(activity)
     }
 
@@ -73,7 +79,7 @@ object ActManager {
      *  @param requestCode 请求码
      */
     fun start(
-        clazz: Class<out Activity>,
+        clazz: Class<out AppCompatActivity>,
         params: Map<String, Any> = emptyMap(),
         requestCode: Int = -1
     ) {
@@ -133,7 +139,7 @@ object ActManager {
     /**
      * 结束
      */
-    fun finish(context: Activity) {
+    fun finish(context: AppCompatActivity) {
         context.finish()
         context.overridePendingTransition(R.anim.slide_left_in, R.anim.slide_right_out)
     }

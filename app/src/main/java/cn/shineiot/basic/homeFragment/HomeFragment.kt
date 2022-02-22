@@ -38,6 +38,7 @@ class HomeFragment : BaseVmFragment<FragmengHomeBinding, HomeViewModel>(){
             override fun OnItemClick(v: View, position: Int) {
                 if(v.id == R.id.title){
                     SnackBarUtil.show(viewBinding.recyclerview,adapter.getItem(position))
+                    ActManager.start(LoginActivity::class.java)
                 }else{
                     SnackBarUtil.show(viewBinding.recyclerview,"item")
                 }
