@@ -9,6 +9,7 @@ import cn.shineiot.base.utils.SnackBarUtil
 import cn.shineiot.basic.LoginActivity
 import cn.shineiot.basic.R
 import cn.shineiot.basic.databinding.FragmengHomeBinding
+import kotlinx.coroutines.launch
 
 /**
  * @Description home
@@ -45,6 +46,9 @@ class HomeFragment : BaseVmFragment<FragmengHomeBinding, HomeViewModel>(){
             }
         })
 
+        launch {
+
+        }
     }
 
     override fun dismissDialog(msg : String?) {
