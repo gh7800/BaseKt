@@ -66,60 +66,11 @@ public class DownLoadUtil {
 
     public static class DownLoadTask extends AsyncTask<String, Integer, File> {
 
-        private NotificationManager notificationManager;
-        private Notification notification;
-        private NotificationCompat.Builder builder;
-        private NotificationCompat.Builder builder2;
-        private ContentLoadingProgressBar progressBar;
-        private AppCompatTextView tv;
-        private Dialog mDialog;
+        //private ContentLoadingProgressBar progressBar;
+        //private AppCompatTextView tv;
+        //private Dialog mDialog;
         private int currentProgress = 0;
         private Boolean isDownload = false;
-
-        //初始化通知
-        private void initNotification() {
-            notificationManager = (NotificationManager) BaseApplication.context().getSystemService(Context.NOTIFICATION_SERVICE);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                List<NotificationChannel> list = new ArrayList<NotificationChannel>();
-                NotificationChannel channel = new NotificationChannel("DownloadID1", "Download", NotificationManager.IMPORTANCE_LOW);
-                channel.enableVibration(false);
-                channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
-                channel.setGroup("MyGroupId");
-
-                NotificationChannel channel2 = new NotificationChannel("DownloadID2", "DownloadMessage", NotificationManager.IMPORTANCE_HIGH);
-                channel2.enableVibration(false);
-                channel2.setGroup("MyGroupId");
-
-                list.add(channel);
-                list.add(channel2);
-                notificationManager.createNotificationChannels(list);
-
-            }
-            builder = new NotificationCompat.Builder(mcontext, "DownloadID1");
-            builder2 = new NotificationCompat.Builder(mcontext, "DownloadID2");
-
-            builder.setContentTitle("正在更新...") //设置通知标题
-                    .setSmallIcon(R.drawable.ic_launcher_round)
-                    .setLargeIcon(BitmapFactory.decodeResource(BaseApplication.context().getResources(), R.drawable.ic_launcher_round)) //设置通知的大图标
-                    .setDefaults(Notification.DEFAULT_LIGHTS) //设置通知的提醒方式： 呼吸灯
-                    .setPriority(NotificationCompat.PRIORITY_MAX) //设置通知的优先级：最大
-                    .setAutoCancel(false)//设置通知被点击一次是否自动取消
-                    .setContentText("下载进度:" + "0%")
-                    .setProgress(100, 0, false);
-
-            builder2.setContentText("移动办公正在下载...")
-                    .setSmallIcon(R.drawable.ic_launcher_round)
-                    .setLargeIcon(BitmapFactory.decodeResource(BaseApplication.context().getResources(), R.drawable.ic_launcher_round)) //设置通知的大图标
-                    .setContentTitle("版本更新")
-                    .setDefaults(Notification.DEFAULT_LIGHTS)
-                    .setAutoCancel(true);
-
-            notification = builder.build();//构建通知对象
-            notificationManager.notify(1, notification);
-
-            notificationManager.notify(2,builder2.build());
-
-        }
 
         @Override
         protected void onPreExecute() {
@@ -127,7 +78,7 @@ public class DownLoadUtil {
 
             //initNotification();
 
-            mDialog = new Dialog(mcontext);
+            /*mDialog = new Dialog(mcontext);
             mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             View view = LayoutInflater.from(mcontext).inflate(R.layout.dialog_update, null);
             mDialog.setContentView(view);
@@ -140,7 +91,7 @@ public class DownLoadUtil {
             lp.alpha = 1f;//完全不透明
             dialogWindow.setAttributes(lp);
             mDialog.setCanceledOnTouchOutside(false);
-            // mDialog.show();
+            mDialog.show();*/
 
         }
 
@@ -216,31 +167,17 @@ public class DownLoadUtil {
 
             if (value == 100) {
                 isDownFinish = true;
-            } else if ((value - currentProgress) >= 5) {
-                if(!isDownload && value >= 20) {
-                    notificationManager.cancel(2);
-                    isDownload = true;
-                }
+            } else if ((value - currentProgress) >= 3) {
 
                 currentProgress = value;
-                tv.setText("下载中.. " + value + "%");
-                progressBar.setProgress(value);
 
-                downProgressListener.downProgress("下载中.. " + value + "%");
+                downProgressListener.downProgress(value);
 
-//                builder.setProgress(100, value, false);
-//                builder.setContentText("下载进度:" + value + "%");
-//
-//                notification = builder.build();
-//                notificationManager.notify(1, notification);
             }
         }
 
         @Override
         protected void onPostExecute(File result) {
-            mDialog.dismiss();
-            notificationManager.cancel(1);
-
             if (null != result && isDownFinish) {
                 isDownFinish = false;
                 downProgressListener.downResult(true,result.getAbsolutePath());
@@ -255,7 +192,7 @@ public class DownLoadUtil {
         @Override
         protected void onCancelled(File file) {
             super.onCancelled(file);
-            notificationManager.cancel(1);
+            downProgressListener.downResult(false,"");
             if (null != file && file.exists()) {
                 LogUtil.INSTANCE.e("已删除_" + file.getAbsolutePath());
                 file.delete();
@@ -273,7 +210,7 @@ public class DownLoadUtil {
 
         public interface DownProgressListener {
             void downStart(); //可以进行初始化通知
-            void downProgress(String progress); //更新下载进度
+            void downProgress(int progress); //更新下载进度
             void downResult(boolean result,String path);  //下载结果
         }
 
