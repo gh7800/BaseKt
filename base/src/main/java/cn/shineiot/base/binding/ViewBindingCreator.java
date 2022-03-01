@@ -1,11 +1,9 @@
 package cn.shineiot.base.binding;
 
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.viewbinding.ViewBinding;
 
 import java.lang.reflect.Method;
@@ -22,8 +20,9 @@ public class ViewBindingCreator {
 
     /**
      * Activity使用
-     * @param clazz javaClass
-     * @param inflater  layoutInflater
+     *
+     * @param clazz    javaClass
+     * @param inflater layoutInflater
      * @return
      */
     public static <Binding extends ViewBinding> Binding create(Class<?> clazz, LayoutInflater inflater) {
@@ -68,35 +67,4 @@ public class ViewBindingCreator {
         return bindingClass;
     }
 
-    /**
-     * android 9.0以上才可用
-     */
-    @RequiresApi(api = Build.VERSION_CODES.P)
-    public static <VB extends ViewBinding> VB createViewBinding(Class targetClass, LayoutInflater layoutInflater)
-    {
-        Type type = targetClass.getGenericSuperclass();
-
-        if (type instanceof ParameterizedType)
-        {
-            try
-            {
-                Type[] types = ((ParameterizedType) type).getActualTypeArguments();
-
-                for (Type type1 : types)
-                {
-                    if (type1.getTypeName().endsWith("Binding"))
-                    {
-                        Method method = ((Class<VB>) type1).getMethod("inflate",
-                                LayoutInflater.class);
-                        return (VB) method.invoke(null, layoutInflater);
-                    }
-                }
-
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-        } return null;
-    }
 }
