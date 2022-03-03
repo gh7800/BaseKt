@@ -15,6 +15,7 @@ import com.maning.mndialoglibrary.listeners.OnDialogDismissListener
 
 object DialogUtil {
     private val mBuild by lazy { MDialogConfig.Builder() }
+    @SuppressLint("StaticFieldLeak")
     private var dialog: MaterialDialog? = null
 
     /**
@@ -24,10 +25,12 @@ object DialogUtil {
         context: Context,
         content: String? = "加载中"
     ) {
-        mBuild.isCancelable(true)
-            .isCanceledOnTouchOutside(false)
-        val mConfig = mBuild.build()
-        MProgressDialog.showProgress(context, content, mConfig)
+        if (!MProgressDialog.isShowing()) {
+            mBuild.isCancelable(true)
+                .isCanceledOnTouchOutside(false)
+            val mConfig = mBuild.build()
+            MProgressDialog.showProgress(context, content, mConfig)
+        }
     }
 
     /**
@@ -38,15 +41,19 @@ object DialogUtil {
         content: String,
         onDialogDismissListener: OnDialogDismissListener
     ) {
-        mBuild.isCancelable(true)
-            .isCanceledOnTouchOutside(false)
-            .setOnDialogDismissListener(onDialogDismissListener)
-        val mConfig = mBuild.build()
-        MProgressDialog.showProgress(context, content, mConfig)
+        if (!MProgressDialog.isShowing()) {
+            mBuild.isCancelable(true)
+                .isCanceledOnTouchOutside(false)
+                .setOnDialogDismissListener(onDialogDismissListener)
+            val mConfig = mBuild.build()
+            MProgressDialog.showProgress(context, content, mConfig)
+        }
     }
 
     fun hideDialog() {
-        MProgressDialog.dismissProgress()
+        if(MProgressDialog.isShowing()) {
+            MProgressDialog.dismissProgress()
+        }
     }
 
     /**
@@ -101,10 +108,10 @@ object DialogUtil {
      * 带图片的，提交成功
      */
     @SuppressLint("UseCompatLoadingForDrawables")
-    fun showSuccess(context: AppCompatActivity, msg: String? = "提交成功", delay : Long = 2000){
-        if(msg?.isNotEmpty() == true){
+    fun showSuccess(context: AppCompatActivity, msg: String? = "提交成功", delay: Long = 2000) {
+        if (msg?.isNotEmpty() == true) {
             val dialog = MStatusDialog(context)
-            dialog.show(msg, context.getDrawable(R.drawable.icon_success),delay)
+            dialog.show(msg, context.getDrawable(R.drawable.icon_success), delay)
         }
     }
 
@@ -112,10 +119,10 @@ object DialogUtil {
      * 带图片的，加载失败
      */
     @SuppressLint("UseCompatLoadingForDrawables")
-    fun showError(context: AppCompatActivity, msg: String?= "加载失败", delay : Long = 2000){
-        if(msg?.isNotEmpty() == true){
+    fun showError(context: AppCompatActivity, msg: String? = "加载失败", delay: Long = 2000) {
+        if (msg?.isNotEmpty() == true) {
             val dialog = MStatusDialog(context)
-            dialog.show(msg, context.getDrawable(R.drawable.icon_error),delay)
+            dialog.show(msg, context.getDrawable(R.drawable.icon_error), delay)
         }
     }
 }
