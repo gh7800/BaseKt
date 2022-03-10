@@ -74,7 +74,9 @@ public class DownLoadUtil {
 
         @Override
         protected void onPreExecute() {
-            downProgressListener.downStart();
+            if(null != downProgressListener) {
+                downProgressListener.downStart();
+            }
 
             //initNotification();
 
@@ -171,7 +173,9 @@ public class DownLoadUtil {
 
                 currentProgress = value;
 
-                downProgressListener.downProgress(value);
+                if(null != downProgressListener) {
+                    downProgressListener.downProgress(value);
+                }
 
             }
         }
@@ -180,11 +184,15 @@ public class DownLoadUtil {
         protected void onPostExecute(File result) {
             if (null != result && isDownFinish) {
                 isDownFinish = false;
-                downProgressListener.downResult(true,result.getAbsolutePath());
+                if(null != downProgressListener) {
+                    downProgressListener.downResult(true,result.getAbsolutePath());
+                }
             } else if (null != result && result.exists()) {       //下载失败
                 LogUtil.INSTANCE.e("已删除_" + result.getAbsolutePath());
                 result.delete();
-                downProgressListener.downResult(false,result.getAbsolutePath());
+                if(null != downProgressListener) {
+                    downProgressListener.downResult(false,result.getAbsolutePath());
+                }
             }
             mcontext = null;
         }
@@ -192,7 +200,9 @@ public class DownLoadUtil {
         @Override
         protected void onCancelled(File file) {
             super.onCancelled(file);
-            downProgressListener.downResult(false,"");
+            if(null != downProgressListener) {
+                downProgressListener.downResult(false,"");
+            }
             if (null != file && file.exists()) {
                 LogUtil.INSTANCE.e("已删除_" + file.getAbsolutePath());
                 file.delete();
