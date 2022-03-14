@@ -6,7 +6,7 @@ import android.os.CountDownTimer;
  * @author GF63
  * 定时器
  */
-public class CountDownTimerUtil extends CountDownTimer {
+public class CountDownTimerUtil extends ICountDownTimer {
 	/**
 	 * @param millisInFuture  总数
 	 * @param countDownInterval 间隔

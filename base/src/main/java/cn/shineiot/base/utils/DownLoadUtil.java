@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.app.NotificationCompat;
@@ -76,6 +77,8 @@ public class DownLoadUtil {
         protected void onPreExecute() {
             if(null != downProgressListener) {
                 downProgressListener.downStart();
+            }else{
+                ToastUtil.Companion.show("downProgressListener 尚未初始化", Toast.LENGTH_SHORT);
             }
 
             //initNotification();
