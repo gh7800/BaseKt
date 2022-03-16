@@ -35,7 +35,6 @@ public class CountDownTimerUtil extends ICountDownTimer {
 		this.start();
 	}
 
-
 	@Override
 	public void onFinish() {
 		this.cancel();

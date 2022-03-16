@@ -7,6 +7,7 @@ plugins{
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'maven-publish'
+    id 'kotlin-parcelize'
 }
 
 task sourceJar(type: Jar) {
@@ -20,7 +21,7 @@ project.afterEvaluate {
                 from components.release
                 groupId = 'com.github.gh7800'
                 artifactId = 'BaseKt'
-                version = '1.4.0'
+                version = '1.4.5'
             }
         }
     }

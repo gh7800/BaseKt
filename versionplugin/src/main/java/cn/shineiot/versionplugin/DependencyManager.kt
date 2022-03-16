@@ -22,7 +22,7 @@ object BuildConfig {
     const val recyclerview = "androidx.recyclerview:recyclerview:1.2.0"
     const val cardView = "androidx.cardview:cardview:1.0.0"
     const val multidex = "androidx.multidex:multidex:2.0.1"
-    const val core_ktx = "androidx.core:core-ktx:1.3.2"
+    const val core_ktx = "androidx.core:core-ktx:1.6.0"
     const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.4"
     const val material = "com.google.android.material:material:1.3.0"
