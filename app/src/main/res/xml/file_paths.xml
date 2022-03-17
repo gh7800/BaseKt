@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        files-path：          该方式提供在应用的内部存储区的文件/子目录的文件。
+                              它对应Context.getFilesDir返回的路径：eg:”/data/data/com.***.***/files”。
+
+        cache-path：          该方式提供在应用的内部存储区的缓存子目录的文件。
+                              它对应Context.getCacheDir返回的路:eg:“/data/data/com.***.***/cache”；
+
+        external-path：       该方式提供在外部存储区域根目录下的文件。
+                              它对应Environment.getExternalStorageDirectory返回的路径
+
+        external-files-path:  Context.getExternalFilesDir(null)
+
+        external-cache-path： Context.getExternalCacheDir(String)
+        -->
+
+    <files-path name="files" path="." />
+    <cache-path name="cache" path="." />
+    <external-path name="external" path="." />
+    <external-files-path name="name" path="path" />
+    <external-cache-path name="name" path="path" />
+</paths>

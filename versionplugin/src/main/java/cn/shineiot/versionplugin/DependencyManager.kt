@@ -60,5 +60,6 @@ object BuildConfig {
 
     const val tbsSdk = "com.tencent.tbs.tbssdk:sdk:43939"
     const val zxing_library = "cn.yipianfengye.android:zxing-library:2.2"
+    const val xPopup = "com.github.li-xiaojun:XPopup:2.7.6"
 
 }

@@ -27,7 +27,7 @@ open class Resource<out T>(val status: Status, val data: T?, val message: String
          * @param e 异常
          */
         protected fun onError(e: Exception) : String? {
-            LogUtil.e("onError---"+e.message)
+            LogUtil.e("Resource onError---"+e.message)
             var error : String? = null
 
             when (e) {

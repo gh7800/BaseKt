@@ -4,9 +4,8 @@ import android.view.View
 import cn.shineiot.base.adapter.BaseAdapter
 import cn.shineiot.base.mvvm.BaseVmFragment
 import cn.shineiot.base.utils.ActManager
-import cn.shineiot.base.utils.LogUtil
 import cn.shineiot.base.utils.SnackBarUtil
-import cn.shineiot.basic.LoginActivity
+import cn.shineiot.basic.login.LoginActivity
 import cn.shineiot.basic.R
 import cn.shineiot.basic.databinding.FragmengHomeBinding
 import kotlinx.coroutines.launch

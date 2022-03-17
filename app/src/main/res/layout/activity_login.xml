@@ -21,6 +21,7 @@
         android:scaleType="centerCrop"
         android:src="@mipmap/icon_five"
         app:shapeAppearanceOverlay="@style/images"
+        android:visibility="gone"
         />
 
     <com.google.android.material.button.MaterialButtonToggleGroup
@@ -30,6 +31,7 @@
         app:checkedButton="@id/btn1"
         android:background="@color/white"
         android:layout_marginTop="@dimen/dp_10"
+        android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/tools"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -90,5 +92,20 @@
         android:maxLength="16"
         android:text="@string/app_name"
         />
+
+    <cn.shineiot.base.widget.IButton
+        android:id="@+id/loginEvent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        app:normal_color="@color/blue"
+        android:text="登录"
+        android:gravity="center"
+        app:radius="@dimen/dp_40"
+        android:textColor="@color/white"
+        android:layout_margin="@dimen/dp_10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
