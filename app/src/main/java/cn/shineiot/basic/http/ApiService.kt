@@ -12,7 +12,7 @@ import retrofit2.http.*
 interface ApiService {
     companion object {
         private const val BASE_URL = "http://tj.hwapp.site/"
-        private const val TEST_URL = "http://tj.hwapp.site:10000/"
+        private const val TEST_URL = "http://tj.hwapp.site/"
 
         //BaseUrl
         fun getBaseUrl(): String {

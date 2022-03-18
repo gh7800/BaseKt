@@ -80,7 +80,6 @@ dependencies {
 
     api BuildConfig.lifecycle_viewModel_ktx
     api BuildConfig.lifecycle_common
-    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     api BuildConfig.kotlinx_coroutines_android
 
     api BuildConfig.retrofit
@@ -108,6 +107,8 @@ dependencies {
 
     api BuildConfig.tbsSdk
     api BuildConfig.xPopup
+    api BuildConfig.mmkv
+
     //api BuildConfig.zxing_library //去除扫一扫防止和第三方com.google.zxing冲突
 
     /*debugApi ("com.didichuxing.doraemonkit:dokitx:$doraemonkit"){

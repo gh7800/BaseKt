@@ -31,7 +31,6 @@ abstract class BaseMvvmActivity<VB : ViewBinding> : AppCompatActivity(),
     CoroutineScope {
 
     //必须被重写
-    //abstract fun viewModelClass(): Class<VM>
     abstract fun initView()
     abstract fun showDialog()
     abstract fun dismissDialog(msg: String ?= null)
@@ -41,7 +40,6 @@ abstract class BaseMvvmActivity<VB : ViewBinding> : AppCompatActivity(),
 
     protected lateinit var mContext: AppCompatActivity
     protected lateinit var viewBinding: VB
-    //protected lateinit var mViewModel: VM
 
     //job用于控制协程,后面launch{}启动的协程,返回的job就是这个job对象
     private lateinit var job: Job
@@ -65,7 +63,6 @@ abstract class BaseMvvmActivity<VB : ViewBinding> : AppCompatActivity(),
         mContext = this
         ActManager.addActivity(mContext)
 
-        //initViewModel()
         initView()
         observe()
         // 因为Activity恢复后savedInstanceState不为null，
@@ -75,10 +72,6 @@ abstract class BaseMvvmActivity<VB : ViewBinding> : AppCompatActivity(),
             initData()
         }
     }
-
-    /*private fun initViewModel() {
-        mViewModel = ViewModelProvider(this).get(viewModelClass())
-    }*/
 
     @SuppressLint("UseCompatLoadingForDrawables")
     fun setToolBar(toolbar: Toolbar, title: String?, textView: AppCompatTextView?, isBack : Boolean = true, icon : Int = 0) {

@@ -46,20 +46,21 @@ object BuildConfig {
     const val glide = "com.github.bumptech.glide:glide:4.9.0"
     const val glide_compiler = "com.github.bumptech.glide:compiler:4.9.0"
 
-    const val MNProgressHUD = "com.github.maning0303:MNProgressHUD:V2.0.0X"
+    const val MNProgressHUD = "com.github.maning0303:MNProgressHUD:V2.0.0X"//加载中的loading
 
-    const val agentWebCore = "com.github.Justson.AgentWeb:agentweb-core:4.1.9-androidx"
-    const val AndroidAutoSize = "com.github.JessYanCoding:AndroidAutoSize:1.2.1"
-    const val permissionX = "com.permissionx.guolindev:permissionx:1.4.0"
+    const val agentWebCore = "com.github.Justson.AgentWeb:agentweb-core:4.1.9-androidx"//webView
+    const val AndroidAutoSize = "com.github.JessYanCoding:AndroidAutoSize:1.2.1"//屏幕适配
+    const val permissionX = "com.permissionx.guolindev:permissionx:1.4.0"//权限申请
 
     const val leakcanary = "com.squareup.leakcanary:leakcanary-android:2.8.1"
-    const val crashReport = "com.tencent.bugly:crashreport:3.4.4"
-    const val matisse = "com.zhihu.android:matisse:0.5.3-beta3"
+    const val crashReport = "com.tencent.bugly:crashreport:3.4.4"//异常信息收集
+    const val matisse = "com.zhihu.android:matisse:0.5.3-beta3"//相册
     const val photoView = "com.github.chrisbanes:PhotoView:2.0.0"
-    const val androidFilePicker = "me.rosuh:AndroidFilePicker:0.7.0"
+    const val androidFilePicker = "me.rosuh:AndroidFilePicker:0.7.0"//文件管理
 
-    const val tbsSdk = "com.tencent.tbs.tbssdk:sdk:43939"
-    const val zxing_library = "cn.yipianfengye.android:zxing-library:2.2"
+    const val tbsSdk = "com.tencent.tbs.tbssdk:sdk:43939" //腾讯浏览服务
+    const val zxing_library = "cn.yipianfengye.android:zxing-library:2.2"//扫一扫
     const val xPopup = "com.github.li-xiaojun:XPopup:2.7.6"
+    const val mmkv = "com.tencent:mmkv:1.2.12"
 
 }

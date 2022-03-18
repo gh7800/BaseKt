@@ -5,7 +5,7 @@
 
 ##### App依赖方式 : ``` implementation 'com.github.gh7800:BaseKt:Tag_Name ```
 
-##### **1.0.5版本与高版本是不兼容的**
+##### **注意：1.0.5版本与高版本是不兼容的**
 
 #### a、发布tag方法
 ##### 1、git add → commit → push  提交代码到远程仓库
@@ -15,3 +15,15 @@
 #### b、删除tag方法
 ##### 1. 删除本地tag  git tag -d tagName
 ##### 2. 删除远程tag  git push origin :refs/tags/tagName
+
+### 依赖的第三方库 在versionPlugin
+#### ·MMKV
+#### ·Xpopup
+#### ·matisse 相册
+#### ·leakcanary
+#### ·permissionX
+#### ·glide
+#### ·eventbus
+#### ·photoView
+#### ·androidFilePicker
+#### ···

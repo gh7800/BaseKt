@@ -2,6 +2,7 @@ package cn.shineiot.basic.http
 
 import android.text.TextUtils
 import cn.shineiot.base.utils.LogUtil
+import cn.shineiot.base.utils.MMKVUtil
 import cn.shineiot.base.utils.SharePreferenceUtils
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -10,7 +11,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
-import java.util.*
 import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
@@ -20,8 +20,12 @@ object RetrofitClient {
     //添加头部信息
     private val headerInterceptor: Interceptor = Interceptor {
         token = SharePreferenceUtils.default.getString("token")
+        //1.4.6以上版本建议使用MMKV
+        if(!token.isNullOrEmpty()){
+            token = MMKVUtil.getString("token")
+        }
+
         token = "Bearer $token"
-        //LogUtil.e(token)
 
         val build = it.request().newBuilder()
             .addHeader("Content-Type", "application/json")
@@ -62,9 +66,9 @@ object RetrofitClient {
         .addInterceptor(headerInterceptor)
         .addInterceptor(retryConnectInterceptor)
         //.addNetworkInterceptor(StethoInterceptor())
-        .connectTimeout(30, TimeUnit.SECONDS)
-        .readTimeout(30, TimeUnit.SECONDS)
-        .writeTimeout(30, TimeUnit.SECONDS)
+        .connectTimeout(25, TimeUnit.SECONDS)
+        .readTimeout(25, TimeUnit.SECONDS)
+        .writeTimeout(25, TimeUnit.SECONDS)
         .retryOnConnectionFailure(true)
         .build()
 

@@ -3,6 +3,7 @@ package cn.shineiot.base
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
+import com.tencent.mmkv.MMKV
 
 open class BaseApplication : Application() {
     companion object {
@@ -19,6 +20,7 @@ open class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         context = applicationContext
+        MMKV.initialize(context)
     }
 
 }

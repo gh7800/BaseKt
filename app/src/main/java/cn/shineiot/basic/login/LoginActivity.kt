@@ -4,7 +4,10 @@ import cn.shineiot.base.mvvm.BaseMvvmActivity
 import cn.shineiot.base.mvvm.Status
 import cn.shineiot.base.mvvm.initViewModelS
 import cn.shineiot.base.utils.DialogUtil
+import cn.shineiot.base.utils.LogUtil
+import cn.shineiot.base.utils.MMKVUtil
 import cn.shineiot.base.utils.SnackBarUtil
+import cn.shineiot.basic.bean.UserBean
 import cn.shineiot.basic.databinding.ActivityLoginBinding
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -22,7 +25,7 @@ class LoginActivity : BaseMvvmActivity<ActivityLoginBinding>() {
 
     override fun initView() {
         setToolBar(viewBinding.tools.toolbar, "login", viewBinding.tools.toolbarTitle)
-
+        MMKVUtil.save("title",UserBean("username"))
         viewBinding.loginEvent.setOnClickListener {
             launch {
                 viewModel.login("admin", "admin", "", "1").collect {
@@ -30,6 +33,8 @@ class LoginActivity : BaseMvvmActivity<ActivityLoginBinding>() {
                         Status.LOADING -> showDialog()
                         Status.SUCCESS -> {
                             dismissDialog("登录成功")
+                            val userbean = MMKVUtil.getParcelable("title",UserBean::class.java)
+                           LogUtil.e(userbean)
                         }
                         Status.ERROR -> {
                             dismissDialog(it.message)
@@ -38,6 +43,7 @@ class LoginActivity : BaseMvvmActivity<ActivityLoginBinding>() {
                 }
             }
         }
+
     }
 
     override fun observe() {
