@@ -108,6 +108,9 @@ dependencies {
     api BuildConfig.tbsSdk
     api BuildConfig.xPopup
     api BuildConfig.mmkv
+    api BuildConfig.room
+    api BuildConfig.room_ktx
+    api BuildConfig.room_compiler
 
     //api BuildConfig.zxing_library //去除扫一扫防止和第三方com.google.zxing冲突
 
