@@ -3,8 +3,6 @@ package cn.shineiot.base.mvvm
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.content.pm.ActivityInfo
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
@@ -13,7 +11,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import cn.shineiot.base.binding.ViewBindingCreator
 import cn.shineiot.base.utils.ActManager

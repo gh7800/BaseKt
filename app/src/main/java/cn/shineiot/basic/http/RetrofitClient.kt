@@ -81,6 +81,7 @@ object RetrofitClient {
 
 
     val apiService: ApiService by lazy {
+        LogUtil.e(retrofit)
         retrofit.create(ApiService::class.java)
     }
     fun getRetrofitPart(file: File): MultipartBody.Part {

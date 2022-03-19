@@ -9,7 +9,6 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import cn.shineiot.base.binding.ViewBindingCreator
 import cn.shineiot.base.utils.LogUtil

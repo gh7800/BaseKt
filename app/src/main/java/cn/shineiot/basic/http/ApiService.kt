@@ -2,6 +2,8 @@ package cn.shineiot.basic.http
 
 import cn.shineiot.basic.BuildConfig
 import cn.shineiot.base.mvp.BaseResult
+import cn.shineiot.base.utils.Constants
+import cn.shineiot.base.utils.MMKVUtil
 import cn.shineiot.basic.bean.UserBean
 import retrofit2.http.*
 
@@ -12,16 +14,35 @@ import retrofit2.http.*
 interface ApiService {
     companion object {
         private const val BASE_URL = "http://tj.hwapp.site/"
-        private const val TEST_URL = "http://tj.hwapp.site/"
+        private const val BASE_URL_SPARE = "http://tj.hwapp.site/"
 
-        //BaseUrl
+        private const val TEST_URL = "http://tj.hwapp.site/"
+        private const val TEST_URL_SPARE = "http://tj.hwapp.site/"
+
+        /**
+         * SERVE_BASE_URL 默认为false
+         */
         fun getBaseUrl(): String {
-            return when {
-                BuildConfig.DEBUG -> {
-                    TEST_URL
+            return when(MMKVUtil.getBoolean(Constants.SERVE_BASE_URL)) {
+                false -> {
+                    when {
+                        BuildConfig.DEBUG -> {
+                            TEST_URL
+                        }
+                        else -> {
+                            BASE_URL
+                        }
+                    }
                 }
-                else -> {
-                    BASE_URL
+                true ->{ //启用备用域名
+                    when {
+                        BuildConfig.DEBUG -> {
+                            TEST_URL_SPARE
+                        }
+                        else -> {
+                            BASE_URL_SPARE
+                        }
+                    }
                 }
             }
         }

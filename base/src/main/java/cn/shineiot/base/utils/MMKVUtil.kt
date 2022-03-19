@@ -36,6 +36,10 @@ object MMKVUtil {
         return kv.decodeLong(key, 0)
     }
 
+    fun getBoolean(key : String) : Boolean{
+        return kv.getBoolean(key,false)
+    }
+
     fun getFloat(key: String): Float {
         return kv.decodeFloat(key, 0F)
     }
@@ -71,5 +75,12 @@ object MMKVUtil {
     /**是否包含key*/
     fun isContain(key: String) : Boolean{
         return kv.containsKey(key)
+    }
+
+    /**
+     * 删除所有
+     */
+    fun deleteAll(){
+        kv.clearAll()
     }
 }

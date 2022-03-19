@@ -2,11 +2,14 @@ package cn.shineiot.base.mvvm
 
 import cn.shineiot.base.bean.LoginEvent
 import cn.shineiot.base.mvp.ApiException
+import cn.shineiot.base.utils.Constants
 import cn.shineiot.base.utils.LogUtil
+import cn.shineiot.base.utils.MMKVUtil
 import com.google.gson.JsonParseException
 import org.greenrobot.eventbus.EventBus
 import retrofit2.HttpException
 import java.net.ConnectException
+import java.net.SocketException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import kotlin.Exception
@@ -49,6 +52,11 @@ open class Resource<out T>(val status: Status, val data: T?, val message: String
                 is SocketTimeoutException -> {
                     error = "网络请求超时"
                 }
+                is SocketException -> {
+                    error = "访问域名异常"
+                    val isBase = MMKVUtil.getBoolean(Constants.SERVE_BASE_URL)
+                    MMKVUtil.save(Constants.SERVE_BASE_URL,!isBase)
+                }
                 is JsonParseException -> {
                     error = "数据解析错误"
                 }
@@ -57,6 +65,11 @@ open class Resource<out T>(val status: Status, val data: T?, val message: String
                 }
                 is HttpException -> {
                     when (e.code()) {
+                        400 -> {
+                            error = "访问域名异常"
+                            val isBase = MMKVUtil.getBoolean(Constants.SERVE_BASE_URL)
+                            MMKVUtil.save(Constants.SERVE_BASE_URL,!isBase)
+                        }
                         401 -> {
                             error = "权限验证错误"
                             EventBus.getDefault().post(LoginEvent())
