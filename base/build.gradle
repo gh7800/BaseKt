@@ -113,8 +113,8 @@ dependencies {
     api BuildConfig.xPopup
     api BuildConfig.mmkv
     api BuildConfig.room
+    kapt BuildConfig.room_compiler_kapt
     api BuildConfig.room_ktx
-    api BuildConfig.room_compiler
     api BuildConfig.mpAndroidChart
 
     //api BuildConfig.zxing_library //去除扫一扫防止和第三方com.google.zxing冲突

@@ -63,8 +63,8 @@ object BuildConfig {
     const val xPopup = "com.github.li-xiaojun:XPopup:2.7.6"//popupWindow
     const val mmkv = "com.tencent:mmkv:1.2.12"//mmkv
     const val room = "androidx.room:room-runtime:2.4.2"//room数据库
+    const val room_compiler_kapt =  "androidx.room:room-compiler:2.4.2"
     const val room_ktx =  "androidx.room:room-ktx:2.4.2"
-    const val room_compiler =  "androidx.room:room-compiler:2.4.2"
     const val mpAndroidChart = "com.github.PhilJay:MPAndroidChart:v3.1.0"//图表
 
 }
