@@ -1,4 +1,7 @@
+import cn.shineiot.versionplugin.BuildConfig
+
 plugins {
+    id 'cn.shineiot.versionplugin' //首行
     id 'com.android.application'
     id 'kotlin-android'
 //    id 'com.huawei.agconnect'
@@ -65,6 +68,8 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    kapt BuildConfig.room_compiler_kapt
 
     implementation project(path: ':base')
 //    implementation 'com.github.gh7800:BaseKt:1.2.7'
