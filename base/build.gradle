@@ -56,6 +56,10 @@ android {
         isCheckDependencies true
     }*/
 
+    configurations {
+        cleanedAnnotations
+        compile.exclude group: 'org.jetbrains' , module:'annotations'
+    }
 }
 
 dependencies {
