@@ -50,16 +50,14 @@ object BuildConfig {
 
     const val agentWebCore = "com.github.Justson.AgentWeb:agentweb-core:4.1.9-androidx"//webView
     const val AndroidAutoSize = "com.github.JessYanCoding:AndroidAutoSize:1.2.1"//屏幕适配
-    const val permissionX = "com.permissionx.guolindev:permissionx:1.4.0"//权限申请
+    const val permissionX = "com.guolindev.permissionx:permissionx:1.6.1"//权限申请
 
     const val leakcanary = "com.squareup.leakcanary:leakcanary-android:2.8.1"//内存泄漏
     const val crashReport = "com.tencent.bugly:crashreport:3.4.4"//异常信息收集
-    const val matisse = "com.zhihu.android:matisse:0.5.3-beta3"//相册
     const val photoView = "com.github.chrisbanes:PhotoView:2.0.0"//photoView
     const val androidFilePicker = "me.rosuh:AndroidFilePicker:0.7.0"//文件管理
-    const val zxing_library = "cn.yipianfengye.android:zxing-library:2.2"//扫一扫
 
-    const val tbsSdk = "com.tencent.tbs.tbssdk:sdk:43939" //腾讯浏览服务
+    const val tbsSdk = "com.tencent.tbs:tbssdk:44165" //腾讯浏览服务
     const val xPopup = "com.github.li-xiaojun:XPopup:2.7.6"//popupWindow
     const val mmkv = "com.tencent:mmkv:1.2.12"//mmkv
     const val room = "androidx.room:room-runtime:2.4.2"//room数据库
@@ -67,4 +65,7 @@ object BuildConfig {
     const val room_ktx =  "androidx.room:room-ktx:2.4.2"
     const val mpAndroidChart = "com.github.PhilJay:MPAndroidChart:v3.1.0"//图表
 
+    //jcenter() 未迁移的
+    const val matisse = "com.zhihu.android:matisse:0.5.3-beta3"//相册
+    const val zxing_library = "cn.yipianfengye.android:zxing-library:2.2"//扫一扫
 }
