@@ -1,4 +1,4 @@
-package cn.shineiot.base.mvvm
+package cn.shineiot.base.dataBinding
 
 import android.content.Context
 import android.os.Bundle
@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.viewbinding.ViewBinding
-import cn.shineiot.base.binding.ViewBindingCreator
+import cn.shineiot.base.binding.ViewDataBindingCreator
 import cn.shineiot.base.utils.LogUtil
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,14 +23,16 @@ import kotlin.coroutines.CoroutineContext
 /**
  * BaseMVVMFragment
  */
-abstract class BaseMvvmFragment<VB : ViewBinding> : Fragment() , CoroutineScope {
+abstract class BaseMvvmFragment<VDB : ViewDataBinding> : Fragment() , CoroutineScope {
+    //必须重写
     abstract fun initView()
+    //可以重写
     open fun showDialog(){}
     open fun dismissDialog(msg : String? = null){}
     open fun observe() {}
 
     protected lateinit var mContext: AppCompatActivity
-    protected lateinit var viewBinding: VB
+    protected lateinit var viewBinding : VDB
 
     //job用于控制协程,后面launch{}启动的协程,返回的job就是这个job对象
     private lateinit var job: Job
@@ -42,6 +46,13 @@ abstract class BaseMvvmFragment<VB : ViewBinding> : Fragment() , CoroutineScope 
                 it(result)
             }
         }
+    //dataBinding
+    protected inline fun <reified T : ViewDataBinding> binding(
+        inflater: LayoutInflater,
+        @LayoutRes resId: Int,
+        container: ViewGroup?
+    ): T = DataBindingUtil.inflate(inflater, resId, container, false)
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -54,7 +65,8 @@ abstract class BaseMvvmFragment<VB : ViewBinding> : Fragment() , CoroutineScope 
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        viewBinding = ViewBindingCreator.create(javaClass,layoutInflater,container)
+
+        viewBinding = ViewDataBindingCreator.create(javaClass,layoutInflater,container)
         return viewBinding.root
     }
 

@@ -1,4 +1,4 @@
-package cn.shineiot.base.mvvm
+package cn.shineiot.base.dataBinding
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,8 +11,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
-import androidx.viewbinding.ViewBinding
-import cn.shineiot.base.binding.ViewBindingCreator
+import androidx.databinding.ViewDataBinding
+import cn.shineiot.base.binding.ViewDataBindingCreator
 import cn.shineiot.base.utils.ActManager
 import cn.shineiot.base.utils.LogUtil
 import kotlinx.coroutines.CoroutineScope
@@ -22,13 +22,12 @@ import java.util.*
 import kotlin.coroutines.CoroutineContext
 
 /**
- * Base-Mvvm-Activity
- * viewBinding
+ * Base-Mvvm-Activity  使用的dataBinding
  */
-abstract class BaseMvvmActivity<VB : ViewBinding> : AppCompatActivity(),
+abstract class BaseMvvmActivity<VB : ViewDataBinding> : AppCompatActivity(),
     CoroutineScope {
 
-    //必须被重写
+    //必须重写
     abstract fun initView()
     //可以被重写
     open fun showDialog(){}
@@ -54,7 +53,7 @@ abstract class BaseMvvmActivity<VB : ViewBinding> : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewBinding = ViewBindingCreator.create(javaClass, layoutInflater)
+        viewBinding = ViewDataBindingCreator.create(javaClass, layoutInflater)
         setContentView(viewBinding.root)
 
         job = Job()
@@ -141,5 +140,4 @@ abstract class BaseMvvmActivity<VB : ViewBinding> : AppCompatActivity(),
 
         ActManager.finishActivity(mContext)
     }
-
 }

@@ -21,14 +21,16 @@ project.afterEvaluate {
                 from components.release
                 groupId = 'com.github.gh7800'
                 artifactId = 'BaseKt'
-                version = '1.4.9'
+                version = '1.5.2'
             }
         }
     }
 }
 
 android {
+
     buildFeatures {
+        dataBinding true
         viewBinding true
     }
 
