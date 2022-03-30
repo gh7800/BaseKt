@@ -72,6 +72,6 @@ dependencies {
 
     kapt BuildConfig.room_compiler_kapt
 
-//    implementation project(path: ':base')
-    implementation 'com.github.gh7800:BaseKt:1.5.1'
+    implementation project(path: ':base')
+//    implementation 'com.github.gh7800:BaseKt:1.5.1'
 }

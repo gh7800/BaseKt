@@ -31,7 +31,7 @@ fun <BVM : BaseViewModel> initViewModelS(
 fun <BVM : BaseViewModel> initViewModelS(
     fragment: Fragment,
     vmClass: KClass<BVM>,
-    rClass: KClass<BaseRepository>
+    rClass: KClass<out BaseRepository>
 ) =
     ViewModelProvider(fragment, object : ViewModelProvider.NewInstanceFactory() {
         override fun <VM : ViewModel> create(modelClass: Class<VM>): VM {
