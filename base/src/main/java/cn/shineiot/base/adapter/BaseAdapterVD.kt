@@ -34,9 +34,9 @@ abstract class BaseAdapterVD<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>,
         get() = job + Dispatchers.Main
 
     private val loadNormalType: Int = 0
-    private val loadMoreType: Int = 1
-    private val loadEmptyViewType: Int = 2
-    private val loadErrorViewType: Int = 3
+    private val loadMoreType: Int = 100
+    private val loadEmptyViewType: Int = 200
+    private val loadErrorViewType: Int = 300
 
     private var isEmptyLayout: Boolean = false //是否加载空布局
     private var isErrorLayout: Boolean = false //是否加载错误布局

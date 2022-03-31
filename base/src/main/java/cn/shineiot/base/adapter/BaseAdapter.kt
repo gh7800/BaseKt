@@ -35,9 +35,9 @@ abstract class BaseAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>, C
         get() = job + Dispatchers.Main
 
     private val loadNormalType: Int = 0
-    private val loadMoreType: Int = 1
-    private val loadEmptyViewType: Int = 2
-    private val loadErrorViewType: Int = 3
+    private val loadMoreType: Int = 100
+    private val loadEmptyViewType: Int = 200
+    private val loadErrorViewType: Int = 300
 
     private var isEmptyLayout: Boolean = false //是否加载空布局
     private var isErrorLayout: Boolean = false //是否加载错误布局
@@ -313,12 +313,7 @@ abstract class BaseAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>, C
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         //LogUtil.e("${viewType}_viewType")
-
         return when (viewType) {
-            loadNormalType -> {
-                //val v = LayoutInflater.from(parent.context).inflate(this.mLayoutId!!, parent, false)
-                KtViewHolder(getViewBinding(viewType, LayoutInflater.from(parent.context), parent))
-            }
             loadMoreType -> {
                 val v =
                     LayoutInflater.from(parent.context).inflate(R.layout.foot_layout, parent, false)
@@ -341,7 +336,7 @@ abstract class BaseAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>, C
                 }
                 holder
             }
-            else -> {
+            loadEmptyViewType -> {
                 val v = LayoutInflater.from(parent.context).inflate(mEmptyLayout!!, parent, false)
                 val holder = EmptyLayoutViewHolder(v)
                 val lp = holder.itemView.layoutParams
@@ -349,6 +344,10 @@ abstract class BaseAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>, C
                     lp.isFullSpan = true
                 }
                 holder
+            }
+            else -> {
+                //val v = LayoutInflater.from(parent.context).inflate(this.mLayoutId!!, parent, false)
+                KtViewHolder(getViewBinding(viewType, LayoutInflater.from(parent.context), parent))
             }
         }
     }
@@ -396,7 +395,9 @@ abstract class BaseAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>, C
     /**
      * 这个多布局判断抽象方法   需实现类 实现操作
      */
-    protected abstract fun getViewType(position: Int): Int
+    open fun getViewType(position: Int): Int{
+        return loadNormalType
+    }
 
     /**
      * 获取ViewBinding实现类
