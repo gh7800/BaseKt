@@ -321,10 +321,6 @@ abstract class BaseAdapterVD<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>,
         //LogUtil.e("${viewType}_viewType")
 
         return when (viewType) {
-            loadNormalType -> {
-                //val v = LayoutInflater.from(parent.context).inflate(this.mLayoutId!!, parent, false)
-                KtViewHolder(getViewBinding(viewType,LayoutInflater.from(parent.context),parent))
-            }
             loadMoreType -> {
                 val v =
                     LayoutInflater.from(parent.context).inflate(R.layout.foot_layout, parent, false)
@@ -346,7 +342,7 @@ abstract class BaseAdapterVD<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>,
                 }
                 holder
             }
-            else -> {
+            loadEmptyViewType -> {
                 val v = LayoutInflater.from(parent.context).inflate(mEmptyLayout!!, parent, false)
                 val holder = EmptyLayoutViewHolder(v)
                 val lp = holder.itemView.layoutParams
@@ -354,6 +350,10 @@ abstract class BaseAdapterVD<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>,
                     lp.isFullSpan = true
                 }
                 holder
+            }
+            else -> {
+                //val v = LayoutInflater.from(parent.context).inflate(this.mLayoutId!!, parent, false)
+                KtViewHolder(getViewBinding(viewType,LayoutInflater.from(parent.context),parent))
             }
         }
     }
