@@ -58,6 +58,9 @@ abstract class BaseAdapterVD<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>,
 
     abstract fun getViewBinding(viewType: Int, from: LayoutInflater, parent: ViewGroup): ViewDataBinding
     abstract fun convert(itemView: ViewDataBinding?, item: T, position: Int)
+    open fun getViewType(position: Int): Int{
+        return loadNormalType
+    }
 
 
     constructor() {
@@ -310,7 +313,7 @@ abstract class BaseAdapterVD<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>,
         } else if (mList.isEmpty() && isEmptyLayout) {
             loadEmptyViewType
         } else {
-            loadNormalType
+            getViewType(position)
         }
     }
 

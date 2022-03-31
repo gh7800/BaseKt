@@ -300,13 +300,14 @@ abstract class BaseAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>, C
 
     override fun getItemViewType(position: Int): Int {
         return if (position == mList.size && mList.size > 0 && null != loadMoreListener && !isLoadEnd) {
-            getViewType(position)
+            loadMoreType
+            //getViewType(position)
         } else if (mList.isEmpty() && isLoadError) {
             loadErrorViewType
         } else if (mList.isEmpty() && isEmptyLayout) {
             loadEmptyViewType
         } else {
-            loadNormalType
+            getViewType(position)
         }
     }
 
