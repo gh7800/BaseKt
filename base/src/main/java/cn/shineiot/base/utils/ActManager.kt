@@ -83,7 +83,12 @@ object ActManager {
         params: Map<String, Any> = emptyMap(),
         requestCode: Int = -1
     ) {
-        val currentActivity = activityStack[activityStack.lastIndex]
+        val index = when {
+            activityStack.lastIndex < 0 -> 0
+            else -> activityStack.lastIndex
+        }
+
+        val currentActivity = activityStack[index]
         val intent = Intent(currentActivity, clazz)
 
         params.forEach {

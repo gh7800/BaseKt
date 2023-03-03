@@ -4,34 +4,34 @@ apply plugin: 'java-gradle-plugin'
 
 buildscript {
     repositories {
-        maven { url "https://jitpack.io"}
-        maven { url 'https://maven.aliyun.com/repository/public' }
+        /*maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url 'https://maven.aliyun.com/repository/central' }
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/public' }
-        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
-//        google()
-//        mavenCentral()
-        //jcenter()
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }*/
+        google()
+        mavenCentral()
+        jcenter()
+        maven { url "https://jitpack.io"}
     }
     dependencies {
         // 因为使用的 Kotlin 需要需要添加 Kotlin 插件
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.21"
     }
 }
 
 repositories {
-    maven { url "https://jitpack.io"}
-    maven { url 'https://maven.aliyun.com/repository/public' }
+    /*maven { url 'https://maven.aliyun.com/repository/public' }
     maven { url 'https://maven.aliyun.com/repository/central' }
     maven { url 'https://maven.aliyun.com/repository/google' }
     maven { url 'https://maven.aliyun.com/repository/public' }
-    maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
-//    google()
-//    mavenCentral()
+    maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }*/
+    google()
+    mavenCentral()
+    maven { url "https://jitpack.io"}
 
     // 需要添加 jcenter 否则会提示找不到 gradlePlugin
-    //jcenter()
+    jcenter()
 }
 
 dependencies {
