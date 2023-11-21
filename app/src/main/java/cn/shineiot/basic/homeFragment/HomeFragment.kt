@@ -1,7 +1,7 @@
 package cn.shineiot.basic.homeFragment
 
 import android.view.View
-import cn.shineiot.base.adapter.BaseAdapter
+import cn.shineiot.base.adapter.BaseAdapterVB
 import cn.shineiot.base.adapter.BaseAdapterVD
 import cn.shineiot.base.mvvm.BaseMvvmFragment
 import cn.shineiot.base.mvvm.initViewModelS
@@ -34,8 +34,8 @@ class HomeFragment : BaseMvvmFragment<HomeFragmentBinding>(){
         viewBinding.recyclerview.adapter = adapter
         adapter.setData(list)
 
-        adapter.setItemClickListener(object : BaseAdapterVD.ItemClick{
-            override fun OnItemClick(v: View, position: Int) {
+        adapter.setItemClickListener(object : BaseAdapterVB.ItemClick{
+            override fun onItemClick(v: View, position: Int) {
                 if(v.id == R.id.title){
                     SnackBarUtil.show(viewBinding.recyclerview,adapter.getItem(position))
                     ActManager.start(LoginActivity::class.java)

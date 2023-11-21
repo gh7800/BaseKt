@@ -1,111 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/F2"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <include
-        android:id="@+id/tools"
-        layout="@layout/layout_toolbar"/>
+    <data>
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/img"
-        android:layout_width="@dimen/dp_100"
-        android:layout_height="@dimen/dp_100"
-        app:layout_constraintTop_toBottomOf="@id/toggleGroup"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_margin="@dimen/dp_16"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/icon_five"
-        app:shapeAppearanceOverlay="@style/images"
-        android:visibility="gone"
-        />
+    </data>
 
-    <com.google.android.material.button.MaterialButtonToggleGroup
-        android:id="@+id/toggleGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:checkedButton="@id/btn1"
-        android:background="@color/white"
-        android:layout_marginTop="@dimen/dp_10"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/tools"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:singleSelection="true">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn1"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="选项一"
-            android:textSize="16sp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn2"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="选项二"
-            android:textSize="16sp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn3"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="选项三"
-            android:textSize="16sp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn4"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="选项四"
-            android:textSize="16sp" />
-
-    </com.google.android.material.button.MaterialButtonToggleGroup>
-
-    <cn.shineiot.base.widget.IEditText
-        android:id="@+id/password"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_48"
-        android:hint="请输入密码.."
-        android:paddingLeft="@dimen/dp_10"
-        app:layout_constraintTop_toBottomOf="@id/img"
-        android:drawablePadding="@dimen/dp_10"
-        android:layout_margin="@dimen/dp_10"
-        android:drawableLeft="@drawable/icon_lock"
-        app:et_borderWidth="@dimen/dp_2"
-        app:et_borderColor="@color/gray"
-        app:et_radius="@dimen/dp_10"
-        android:drawableRight="@drawable/icon_base_clear"
-        android:paddingRight="@dimen/dp_16"
-        android:maxLines="1"
-        android:inputType="text"
-        android:textSize="@dimen/sp_16"
-        android:maxLength="16"
-        android:text="@string/app_name"
-        />
+        android:layout_height="match_parent"
+        android:background="@color/F2">
 
-    <cn.shineiot.base.widget.IButton
-        android:id="@+id/loginEvent"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_40"
-        app:normal_color="@color/blue"
-        android:text="登录"
-        android:gravity="center"
-        app:radius="@dimen/dp_40"
-        android:textColor="@color/white"
-        android:layout_margin="@dimen/dp_10"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        <include
+            android:id="@+id/tools"
+            layout="@layout/layout_toolbar" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_100"
+            app:layout_constraintTop_toBottomOf="@id/toggleGroup"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_margin="@dimen/dp_16"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/icon_five"
+            app:shapeAppearanceOverlay="@style/images"
+            android:visibility="gone" />
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggleGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:checkedButton="@id/btn1"
+            android:background="@color/white"
+            android:layout_marginTop="@dimen/dp_10"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/tools"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:singleSelection="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn1"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选项一"
+                android:textSize="16sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn2"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选项二"
+                android:textSize="16sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn3"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选项三"
+                android:textSize="16sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn4"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选项四"
+                android:textSize="16sp" />
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <cn.shineiot.base.widget.IEditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:hint="请输入密码.."
+            android:paddingLeft="@dimen/dp_10"
+            app:layout_constraintTop_toBottomOf="@id/img"
+            android:drawablePadding="@dimen/dp_10"
+            android:layout_margin="@dimen/dp_10"
+            android:drawableLeft="@drawable/icon_lock"
+            app:et_borderWidth="@dimen/dp_2"
+            app:et_borderColor="@color/gray"
+            app:et_radius="@dimen/dp_10"
+            android:drawableRight="@drawable/icon_base_clear"
+            android:paddingRight="@dimen/dp_16"
+            android:maxLines="1"
+            android:inputType="text"
+            android:textSize="@dimen/sp_16"
+            android:maxLength="16"
+            android:text="@string/app_name" />
+
+        <cn.shineiot.base.widget.IButton
+            android:id="@+id/loginEvent"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            app:normal_color="@color/blue"
+            android:text="登录"
+            android:gravity="center"
+            app:radius="@dimen/dp_40"
+            android:textColor="@color/white"
+            android:layout_margin="@dimen/dp_10"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

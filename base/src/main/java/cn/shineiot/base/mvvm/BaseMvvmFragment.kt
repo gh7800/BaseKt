@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import cn.shineiot.base.binding.ViewBindingCreator
@@ -21,7 +22,7 @@ import kotlin.coroutines.CoroutineContext
 /**
  * BaseMVVMFragment
  */
-abstract class BaseMvvmFragment<VB : ViewBinding> : Fragment() , CoroutineScope {
+abstract class BaseMvvmFragment<VB : ViewDataBinding> : Fragment() , CoroutineScope {
     abstract fun initView()
     open fun showDialog(){}
     open fun dismissDialog(msg : String? = null){}

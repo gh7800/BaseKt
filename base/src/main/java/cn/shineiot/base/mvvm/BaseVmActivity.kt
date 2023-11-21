@@ -25,7 +25,7 @@ import java.util.*
 import kotlin.coroutines.CoroutineContext
 
 /**
- * Base-Mvvm-Activity
+ * BaseMvActivity，建议使用BaseMvvmActivity
  */
 abstract class BaseVmActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatActivity(),
     CoroutineScope {

@@ -11,6 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
+import androidx.databinding.ViewDataBinding
 import androidx.viewbinding.ViewBinding
 import cn.shineiot.base.binding.ViewBindingCreator
 import cn.shineiot.base.utils.ActManager
@@ -25,7 +26,7 @@ import kotlin.coroutines.CoroutineContext
  * Base-Mvvm-Activity
  * viewBinding
  */
-abstract class BaseMvvmActivity<VB : ViewBinding> : AppCompatActivity(),
+abstract class BaseMvvmActivity<VB : ViewDataBinding> : AppCompatActivity(),
     CoroutineScope {
 
     //必须被重写
@@ -51,6 +52,11 @@ abstract class BaseMvvmActivity<VB : ViewBinding> : AppCompatActivity(),
                 it(result)
             }
         }
+    private val activityForResultTakePicture =
+        registerForActivityResult(ActivityResultContracts.TakePicture()) { result ->
+
+        }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,6 +107,10 @@ abstract class BaseMvvmActivity<VB : ViewBinding> : AppCompatActivity(),
     ) {
         resultCallBack.push(callBack)
         activityForResult.launch(Intent(this, cls).apply(block))
+    }
+
+    protected fun startActivityTakePicture(){
+
     }
 
     /**

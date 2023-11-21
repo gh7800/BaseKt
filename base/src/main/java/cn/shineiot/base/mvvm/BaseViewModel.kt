@@ -25,7 +25,7 @@ open class BaseViewModel : ViewModel() {
      * @param error 错误时执行
      * @return Job
      */
-    protected fun launch(block: Block<Unit>, error: Error? , cancel: Cancel?): Job {
+    protected fun launch(block: Block<Unit>, error: Error?, cancel: Cancel? = null): Job {
         return viewModelScope.launch {
             try {
                 block.invoke()
@@ -56,9 +56,10 @@ open class BaseViewModel : ViewModel() {
      * 取消协程
      * @param job 协程job
      */
-    protected fun cancelJob(job: Job?) {
+    fun cancelJob(job: Job?) {
         if (job != null && job.isActive && !job.isCompleted && !job.isCancelled) {
             job.cancel()
+            LogUtil.e("携程取消")
         }
     }
 
@@ -68,9 +69,9 @@ open class BaseViewModel : ViewModel() {
      * 统一处理错误
      * @param e 异常
      */
-    protected fun onError(e: Exception) : String? {
-        LogUtil.e("onError---"+e.message)
-        var error : String? = null
+    protected fun onError(e: Exception): String? {
+        LogUtil.e("onError---" + e.message)
+        var error: String? = null
 
         when (e) {
             is ApiException -> {

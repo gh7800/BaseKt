@@ -9,6 +9,9 @@ import cn.shineiot.base.utils.MMKVUtil
 import cn.shineiot.base.utils.SnackBarUtil
 import cn.shineiot.basic.bean.UserBean
 import cn.shineiot.basic.databinding.ActivityLoginBinding
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -18,6 +21,7 @@ import kotlinx.coroutines.launch
  * @Date : 2022/1/12 16:36
  */
 class LoginActivity : BaseMvvmActivity<ActivityLoginBinding>() {
+    private var loginJob : Job ?= null
 
     private val viewModel by lazy {
         initViewModelS(this, LoginViewModel::class, LoginRepository::class)
@@ -25,16 +29,18 @@ class LoginActivity : BaseMvvmActivity<ActivityLoginBinding>() {
 
     override fun initView() {
         setToolBar(viewBinding.tools.toolbar, "login", viewBinding.tools.toolbarTitle)
+
         MMKVUtil.save("title",UserBean("username"))
         viewBinding.loginEvent.setOnClickListener {
-            launch {
+            loginJob = launch {
                 viewModel.login("admin", "admin", "", "1").collect {
                     when (it.status) {
                         Status.LOADING -> showDialog()
                         Status.SUCCESS -> {
+                            delay(5000)
                             dismissDialog("登录成功")
                             val userbean = MMKVUtil.getParcelable("title",UserBean::class.java)
-                           LogUtil.e(userbean)
+                           LogUtil.e(userbean.toString())
                         }
                         Status.ERROR -> {
                             dismissDialog(it.message)
@@ -57,6 +63,9 @@ class LoginActivity : BaseMvvmActivity<ActivityLoginBinding>() {
     }
 
     override fun showDialog() {
-        DialogUtil.showLoading(mContext)
+        DialogUtil.showLoading(mContext,"正在登录.") {
+            viewModel.cancelJob(loginJob)
+            SnackBarUtil.show(viewBinding.loginEvent,"已取消")
+        }
     }
 }

@@ -58,37 +58,6 @@ open class BasePresenter<T : BaseView> : CoroutineScope, IPresenter<T> {
         }
 
         return launch(Dispatchers.Main) {
-            /*withContext(Dispatchers.IO) {
-                val isServeBase = SharePreferenceUtils.default.getBoolean(Constants.SERVE_BASE_URL)
-                val isServeBaseSpare =
-                    SharePreferenceUtils.default.getBoolean(Constants.SERVE_BASE_URL_SPARE)
-
-                val isConnect = NetworkUtil.pingNetWork(url = "http://bangong.bjxchw.com:9000/")
-                val isConnect2 = NetworkUtil.pingNetWork(url = "http://bangong.bjxchw.com/")
-                LogUtil.e("##  $isConnect $isConnect2 $isServeBase $isServeBaseSpare")
-
-                if (!isServeBase && isConnect) {
-                    SharePreferenceUtils.default.saveValue(Constants.SERVE_BASE_URL, true)
-                    SharePreferenceUtils.default.saveValue(Constants.SERVE_BASE_URL_SPARE, false)
-                    if (isServeBaseSpare ) {
-                        withContext(Dispatchers.Main) {
-                            cancel?.invoke(Exception("网络链接异常！"))
-                            EventBus.getDefault().post(ServeEvent())
-                        }
-                    }
-                } else if (!isServeBaseSpare && isConnect2) {
-                    SharePreferenceUtils.default.saveValue(Constants.SERVE_BASE_URL_SPARE, true)
-                    SharePreferenceUtils.default.saveValue(Constants.SERVE_BASE_URL, false)
-
-                    if(isServeBase) {
-                        withContext(Dispatchers.Main) {
-                            cancel?.invoke(Exception("网络链接异常！"))
-                            EventBus.getDefault().post(ServeEvent())
-                        }
-                    }
-                }
-            }*/
-
             try {
                 block.invoke()
             } catch (e: Exception) {
@@ -118,7 +87,7 @@ open class BasePresenter<T : BaseView> : CoroutineScope, IPresenter<T> {
      * 取消协程
      * @param job 协程job
      */
-    protected fun cancelJob() {
+    fun cancelJob() {
         if (job.isActive && !job.isCompleted && !job.isCancelled) {
             job.cancel()
         }

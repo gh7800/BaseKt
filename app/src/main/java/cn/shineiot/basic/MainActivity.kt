@@ -2,7 +2,8 @@ package cn.shineiot.basic
 
 import android.annotation.SuppressLint
 import android.view.View
-import cn.shineiot.base.mvvm.BaseVmActivity
+import cn.shineiot.base.mvvm.BaseMvvmActivity
+import cn.shineiot.base.mvvm.initViewModelS
 import cn.shineiot.base.utils.ActManager
 import cn.shineiot.base.utils.DialogUtil
 import cn.shineiot.basic.databinding.ActivityMainBinding
@@ -10,22 +11,15 @@ import cn.shineiot.basic.databinding.LayoutToolbarBinding
 import cn.shineiot.basic.homeFragment.HomeFragment
 import cn.shineiot.basic.login.LoginActivity
 
-class MainActivity : BaseVmActivity<ActivityMainBinding, MainViewModel>() {
-    private lateinit var layoutToolbarBinding : LayoutToolbarBinding
+class MainActivity : BaseMvvmActivity<ActivityMainBinding>() {
 
-    override fun viewModelClass(): Class<MainViewModel> {
-        return MainViewModel::class.java
+    private val viewModel by lazy {
+        initViewModelS(mContext,MainViewModel::class,MainRepository::class)
     }
 
     @SuppressLint("SetTextI18n")
     override fun initView() {
-        //setTheme(R.style.ISplashTheme)
-        //installSplashScreen()
-
-        layoutToolbarBinding = LayoutToolbarBinding.bind(viewBinding.root) //获取toolBarBinding
-        //StatusBarUtil.setColor(mContext,ContextCompat.getColor(mContext,R.color.white))
-
-        setToolBar(layoutToolbarBinding.toolbar,"首页",layoutToolbarBinding.toolbarTitle,false)
+        setToolBar(viewBinding.bar.toolbar,"首页",viewBinding.bar.toolbarTitle,false)
 
         viewBinding.textView.text = "Hello-1-1"
 

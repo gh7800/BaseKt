@@ -20,7 +20,7 @@ import java.util.*
 import kotlin.coroutines.CoroutineContext
 
 /**
- * BaseMVVMFragment
+ * 建议使用 → BaseMvvmFragment
  */
 abstract class BaseVmFragment<VB : ViewBinding,VM : BaseViewModel> : Fragment() , CoroutineScope {
     abstract fun viewModelClass(): Class<VM>
