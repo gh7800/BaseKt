@@ -1,5 +1,6 @@
 package cn.shineiot.basic.login
 
+import android.net.Uri
 import cn.shineiot.base.mvvm.BaseMvvmActivity
 import cn.shineiot.base.mvvm.Status
 import cn.shineiot.base.mvvm.initViewModelS
@@ -32,7 +33,9 @@ class LoginActivity : BaseMvvmActivity<ActivityLoginBinding>() {
 
         MMKVUtil.save("title",UserBean("username"))
         viewBinding.loginEvent.setOnClickListener {
-            loginJob = launch {
+            startActivityGetContent("image/*")
+
+            /*loginJob = launch {
                 viewModel.login("admin", "admin", "", "1").collect {
                     when (it.status) {
                         Status.LOADING -> showDialog()
@@ -47,20 +50,27 @@ class LoginActivity : BaseMvvmActivity<ActivityLoginBinding>() {
                         }
                     }
                 }
-            }
+            }*/
         }
 
     }
 
+    override fun onActivityResultForGetContent(uri: Uri) {
+        super.onActivityResultForGetContent(uri)
+        LogUtil.e(uri)
+    }
+
+    override fun onActivityResultForTakePicture(result: Boolean) {
+        super.onActivityResultForTakePicture(result)
+        if(result){
+
+        }
+    }
+
     override fun observe() {
         super.observe()
-
     }
 
-    override fun dismissDialog(msg: String?) {
-        DialogUtil.hideDialog()
-        SnackBarUtil.show(viewBinding.loginEvent, msg)
-    }
 
     override fun showDialog() {
         DialogUtil.showLoading(mContext,"正在登录.") {

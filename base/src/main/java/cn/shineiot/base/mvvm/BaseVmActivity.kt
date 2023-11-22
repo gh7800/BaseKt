@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
@@ -25,7 +27,9 @@ import java.util.*
 import kotlin.coroutines.CoroutineContext
 
 /**
- * BaseMvActivity，建议使用BaseMvvmActivity
+ * 过时
+ *
+ * 建议使用BaseMvvmActivity
  */
 abstract class BaseVmActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatActivity(),
     CoroutineScope {
@@ -112,6 +116,14 @@ abstract class BaseVmActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatA
     ) {
         resultCallBack.push(callBack)
         activityForResult.launch(Intent(this, cls).apply(block))
+    }
+
+    override fun getResources(): Resources? {
+        val res = super.getResources()
+        val config = Configuration()
+        config.setToDefaults()
+        res.updateConfiguration(config, res.displayMetrics)
+        return res
     }
 
     /**

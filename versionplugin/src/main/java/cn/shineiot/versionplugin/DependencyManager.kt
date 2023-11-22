@@ -18,22 +18,23 @@ object BuildConfig {
     const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.20"
 
     //AndroidX
-    const val appcompat = "androidx.appcompat:appcompat:1.3.1"
-    const val recyclerview = "androidx.recyclerview:recyclerview:1.2.0"
+    const val core_ktx = "androidx.core:core-ktx:1.7.0"
+    const val appcompat = "androidx.appcompat:appcompat:1.6.1"
+    const val material = "com.google.android.material:material:1.5.0"
+    const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.4"
+    const val recyclerview = "androidx.recyclerview:recyclerview:1.2.1"
     const val cardView = "androidx.cardview:cardview:1.0.0"
     const val multidex = "androidx.multidex:multidex:2.0.1"
-    const val core_ktx = "androidx.core:core-ktx:1.6.0"
     const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
-    const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.4"
-    const val material = "com.google.android.material:material:1.3.0"
+
     const val material_dialogs_core = "com.afollestad.material-dialogs:core:3.3.0"
     const val material_dialogs_input = "com.afollestad.material-dialogs:input:3.3.0"
     const val material_dialogs_lifecycle = "com.afollestad.material-dialogs:lifecycle:3.2.1"
-    //const val splashScreen = "androidx.core:core-splashscreen:1.0.0-alpha02"
+    const val splashScreen = "androidx.core:core-splashscreen:1.0.0-beta02"
 
-    const val lifecycle_viewModel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
-    const val lifecycle_common = "androidx.lifecycle:lifecycle-common-java8:2.2.0"
-    const val kotlinx_coroutines_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1"
+    const val lifecycle_viewModel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+    const val lifecycle_common = "androidx.lifecycle:lifecycle-common-java8:2.5.1"
+    const val kotlinx_coroutines_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
 
     const val retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
     const val converter_gson = "com.squareup.retrofit2:converter-gson:2.9.0"
@@ -50,16 +51,17 @@ object BuildConfig {
 
     const val agentWebCore = "com.github.Justson.AgentWeb:agentweb-core:4.1.9-androidx"//webView
     const val AndroidAutoSize = "com.github.JessYanCoding:AndroidAutoSize:1.2.1"//屏幕适配
-    const val permissionX = "com.guolindev.permissionx:permissionx:1.6.1"//权限申请
+    const val permissionX = "com.guolindev.permissionx:permissionx:1.7.1"//权限申请
 
     const val leakcanary = "com.squareup.leakcanary:leakcanary-android:2.8.1"//内存泄漏
-    const val crashReport = "com.tencent.bugly:crashreport:3.4.4"//异常信息收集
-    const val photoView = "com.github.chrisbanes:PhotoView:2.0.0"//photoView
-    const val androidFilePicker = "me.rosuh:AndroidFilePicker:0.7.0"//文件管理
+    const val crashReport = "com.tencent.bugly:crashreport:4.1.9"//异常信息收集
+    const val photoView = "com.github.chrisbanes:PhotoView:2.3.0"//photoView
+    const val androidFilePicker = "me.rosuh:AndroidFilePicker:0.8.3"//文件管理
 
     const val tbsSdk = "com.tencent.tbs:tbssdk:44165" //腾讯浏览服务
     const val xPopup = "com.github.li-xiaojun:XPopup:2.7.6"//popupWindow
     const val mmkv = "com.tencent:mmkv:1.2.12"//mmkv
+
     const val room = "androidx.room:room-runtime:2.4.2"//room数据库
     const val room_compiler_kapt =  "androidx.room:room-compiler:2.4.2"
     const val room_ktx =  "androidx.room:room-ktx:2.4.2"

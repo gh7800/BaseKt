@@ -16,12 +16,12 @@ android {
         viewBinding true
     }
 
-    compileSdkVersion 31
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "cn.shineiot.basic"
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 33
 
         versionCode 1
         versionName "1.0"
@@ -73,5 +73,5 @@ dependencies {
     kapt BuildConfig.room_compiler_kapt
 
     implementation project(path: ':base')
-//    implementation 'com.github.gh7800:BaseKt:1.5.1'
+//    implementation 'com.github.gh7800:BaseKt:1.5.7'
 }

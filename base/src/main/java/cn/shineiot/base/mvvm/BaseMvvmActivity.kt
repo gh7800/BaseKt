@@ -3,6 +3,9 @@ package cn.shineiot.base.mvvm
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
+import android.content.res.Resources
+import android.net.Uri
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
@@ -12,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.ViewDataBinding
-import androidx.viewbinding.ViewBinding
 import cn.shineiot.base.binding.ViewBindingCreator
 import cn.shineiot.base.utils.ActManager
 import cn.shineiot.base.utils.LogUtil
@@ -32,10 +34,10 @@ abstract class BaseMvvmActivity<VB : ViewDataBinding> : AppCompatActivity(),
     //必须被重写
     abstract fun initView()
     //可以被重写
-    open fun showDialog(){}
-    open fun dismissDialog(msg: String ?= null){}
-    open fun observe() {}
-    open fun initData() {}
+    protected open fun showDialog(){}
+    protected open fun dismissDialog(msg: String ?= null){}
+    protected open fun observe() {}
+    protected open fun initData() {}
 
     protected lateinit var mContext: AppCompatActivity
     protected lateinit var viewBinding: VB
@@ -45,17 +47,28 @@ abstract class BaseMvvmActivity<VB : ViewDataBinding> : AppCompatActivity(),
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
 
-    private var resultCallBack: Deque<(ActivityResult) -> Unit> = ArrayDeque()
     private val activityForResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            resultCallBack.pop()?.let {
-                it(result)
-            }
+            onActivityResult(result)
         }
     private val activityForResultTakePicture =
         registerForActivityResult(ActivityResultContracts.TakePicture()) { result ->
-
+            onActivityResultForTakePicture(result)
         }
+    private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()){
+        if (it != null) {
+            onActivityResultForGetContent(it)
+        }
+    }
+    private val getContentS = registerForActivityResult(ActivityResultContracts.GetMultipleContents()){
+        onActivityResultForGetContentS(it)
+    }
+
+
+    protected open fun onActivityResult(result : ActivityResult){}
+    protected open fun onActivityResultForTakePicture(result : Boolean){}
+    protected open fun onActivityResultForGetContent(uri: Uri){}
+    protected open fun onActivityResultForGetContentS(uris : List<Uri>){}
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -97,22 +110,33 @@ abstract class BaseMvvmActivity<VB : ViewDataBinding> : AppCompatActivity(),
         }
     }
 
-    /**
-     * 封装startActivityForResult
-     */
-    protected fun startActivityForResult(
+    //startActivity
+    protected open fun startActivityForResult(
         cls: Class<*>,
-        block: Intent.() -> Unit = {},
-        callBack: (result: ActivityResult) -> Unit
+        block: Intent.() -> Unit = {}
     ) {
-        resultCallBack.push(callBack)
         activityForResult.launch(Intent(this, cls).apply(block))
     }
-
-    protected fun startActivityTakePicture(){
-
+    //打开相机
+    protected open fun startActivityTakePicture(uri : Uri){
+        activityForResultTakePicture.launch(uri)
+    }
+    //获取单个图片或文件,image/*
+    protected open fun startActivityGetContent(type : String){
+        getContent.launch(type)
+    }
+    //获取多个图片或文件
+    protected open fun startActivityGetContentS(type : String){
+        getContentS.launch(type)
     }
 
+    override fun getResources(): Resources? {
+        val res = super.getResources()
+        val config = Configuration()
+        config.setToDefaults()
+        res.updateConfiguration(config, res.displayMetrics)
+        return res
+    }
     /**
      * 打开软键盘
      */

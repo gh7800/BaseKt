@@ -1,6 +1,8 @@
 package cn.shineiot.base.mvvm
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -36,13 +38,47 @@ abstract class BaseMvvmFragment<VB : ViewDataBinding> : Fragment() , CoroutineSc
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
 
-    private var resultCallBack: Deque<(ActivityResult) -> Unit> = ArrayDeque()
     private val activityForResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            resultCallBack.pop()?.let {
-                it(result)
-            }
+            onActivityResult(result)
         }
+    private val activityForResultTakePicture =
+        registerForActivityResult(ActivityResultContracts.TakePicture()) { result ->
+            onActivityResultForTakePicture(result)
+        }
+    private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()){
+        if (it != null) {
+            onActivityResultForGetContent(it)
+        }
+    }
+    private val getContentS = registerForActivityResult(ActivityResultContracts.GetMultipleContents()){
+        onActivityResultForGetContentS(it)
+    }
+
+    protected open fun onActivityResult(result : ActivityResult){}
+    protected open fun onActivityResultForTakePicture(result : Boolean){}
+    protected open fun onActivityResultForGetContent(uri: Uri){}
+    protected open fun onActivityResultForGetContentS(uris : List<Uri>){}
+
+    //startActivity
+    protected open fun startActivityForResult(
+        cls: Class<*>,
+        block: Intent.() -> Unit = {}
+    ) {
+        activityForResult.launch(Intent(mContext, cls).apply(block))
+    }
+    //打开相机
+    protected open fun startActivityTakePicture(uri : Uri){
+        activityForResultTakePicture.launch(uri)
+    }
+    //获取单个图片或文件,image/*
+    protected open fun startActivityGetContent(type : String){
+        getContent.launch(type)
+    }
+    //获取多个图片或文件
+    protected open fun startActivityGetContentS(type : String){
+        getContentS.launch(type)
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

@@ -21,7 +21,7 @@ project.afterEvaluate {
                 from components.release
                 groupId = 'com.github.gh7800'
                 artifactId = 'BaseKt'
-                version = '1.5.7'
+                version = '1.5.8'
             }
         }
     }
@@ -82,7 +82,7 @@ dependencies {
     api BuildConfig.material_dialogs_core
     api BuildConfig.material_dialogs_input
     api BuildConfig.material_dialogs_lifecycle
-    //api BuildConfig.splashScreen
+    api BuildConfig.splashScreen
 
     api BuildConfig.lifecycle_viewModel_ktx
     api BuildConfig.lifecycle_common
@@ -121,14 +121,4 @@ dependencies {
 
     //api BuildConfig.zxing_library //去除扫一扫防止和第三方com.google.zxing冲突
 
-    /*debugApi ("com.didichuxing.doraemonkit:dokitx:$doraemonkit"){
-        exclude group: 'com.google.zxing'
-    }
-    releaseApi ("com.didichuxing.doraemonkit:dokitx-no-op:$doraemonkit"){
-        exclude group: 'com.google.zxing'
-    }*/
-    // push kit
-//    api "cn.jiguang.sdk:jpush:4.0.6"
-//    api "cn.jiguang.sdk:jcore:2.7.6"
-//    api "com.huawei.hms:push:5.1.1.301"
 }

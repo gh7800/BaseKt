@@ -25,6 +25,7 @@ class HomeFragment : BaseMvvmFragment<HomeFragmentBinding>(){
     private val list : MutableList<String> = arrayListOf("登录")
 
     override fun initView() {
+
         viewBinding.back.setOnClickListener {
             ActManager.start(LoginActivity::class.java)
         }
@@ -44,10 +45,6 @@ class HomeFragment : BaseMvvmFragment<HomeFragmentBinding>(){
                 }
             }
         })
-
-        launch {
-
-        }
     }
 
     override fun dismissDialog(msg : String?) {
