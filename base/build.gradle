@@ -21,7 +21,7 @@ project.afterEvaluate {
                 from components.release
                 groupId = 'com.github.gh7800'
                 artifactId = 'BaseKt'
-                version = '1.5.9'
+                version = '1.6.0'
             }
         }
     }
