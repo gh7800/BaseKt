@@ -18,9 +18,9 @@ object BuildConfig {
     const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.20"
 
     //AndroidX
-    const val core_ktx = "androidx.core:core-ktx:1.7.0"
-    const val appcompat = "androidx.appcompat:appcompat:1.6.1"
-    const val material = "com.google.android.material:material:1.5.0"
+    const val core_ktx = "androidx.core:core-ktx:1.6.0" //1.7.1 minSDK最小33 有bug
+    const val appcompat = "androidx.appcompat:appcompat:1.3.1" //1.6.1 minSDK最小33 有bug
+    const val material = "com.google.android.material:material:1.3.0"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.4"
     const val recyclerview = "androidx.recyclerview:recyclerview:1.2.1"
     const val cardView = "androidx.cardview:cardview:1.0.0"
