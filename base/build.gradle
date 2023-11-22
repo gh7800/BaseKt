@@ -21,7 +21,7 @@ project.afterEvaluate {
                 from components.release
                 groupId = 'com.github.gh7800'
                 artifactId = 'BaseKt'
-                version = '1.6.0'
+                version = '1.6.1'
             }
         }
     }
@@ -82,7 +82,7 @@ dependencies {
     api BuildConfig.material_dialogs_core
     api BuildConfig.material_dialogs_input
     api BuildConfig.material_dialogs_lifecycle
-    api BuildConfig.splashScreen
+    //api BuildConfig.splashScreen
 
     api BuildConfig.lifecycle_viewModel_ktx
     api BuildConfig.lifecycle_common
